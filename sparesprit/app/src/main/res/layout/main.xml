@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <!--EditText
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:hint="Ort manuell eingeben"
+            android:id="@+id/userTown" /-->
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent">
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:stretchColumns="*"
+                android:layout_alignParentTop="true" >
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="0dp">
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".40"
+                    android:entries="@array/fuel_type_array"
+                    android:prompt="@string/fuel_type_prompt"
+                    android:id="@+id/fuel"
+                    android:contentDescription="Treibstoff wählen" />
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".25"
+                    android:entries="@array/circle_array"
+                    android:prompt="@string/circle_prompt"
+                    android:id="@+id/circle"
+                    android:contentDescription="Treibstoffart"
+                    android:theme="@android:style/Widget.DropDownItem.Spinner" />
+                <Spinner
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".35"
+                    android:entries="@array/sort_by_array"
+                    android:prompt="@string/sort_by_prompt"
+                    android:id="@+id/sortBy"
+                    android:contentDescription="Sortierung nach"
+                    android:theme="@android:style/Widget.DropDownItem.Spinner" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linlaHeaderProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>
