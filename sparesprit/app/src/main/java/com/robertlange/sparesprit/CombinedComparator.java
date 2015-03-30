@@ -8,10 +8,10 @@ public class CombinedComparator implements Comparator<FuelStation>{
     @Override
     public int compare(FuelStation a1, FuelStation a2) {
         // costs for upkeeping and depreciation: ~50 cent per kilometer
-        double upkeeping = 0.50;
+        double upkeeping = 0.40;
 
         // average tank load in Liter
-        double load = 35.0;
+        double load = 40.0;
 
         if((load * (a1.getPrice()- a2.getPrice()))
                 + (upkeeping * (a1.getDistance() - a2.getDistance())) > 0)

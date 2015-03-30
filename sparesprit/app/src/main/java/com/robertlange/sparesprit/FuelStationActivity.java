@@ -65,7 +65,8 @@ public class FuelStationActivity extends Activity implements
         // Define a listener that responds to location updates
         LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(android.location.Location location) {
-                if(location.getTime() > 1000 * 20 + FuelStationActivity.this.location.getTime())
+                if(location.getTime() +  1000 * 20 < FuelStationActivity.this.location.getTime()
+                        && FuelStationActivity.this.location.distanceTo(location) > 50)
                 {
                     FuelStationActivity.this.location = location;
                     FuelStationActivity.this.accessWebService();
