@@ -40,8 +40,7 @@ import org.json.JSONObject;
  * own error codes and systems. You can pass a JSONObject to the Exception
  * by calling createErrorObject().
  *
- * @author 	Isaac Whitfield
- * @version 09/03/2014
+ * @author 	Robert Lange
  *
  */
 public class AndrestClient {

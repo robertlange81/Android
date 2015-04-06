@@ -12,7 +12,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application android:icon="@drawable/ic_launcher" android:label="@string/app_name">
-        <activity android:name=".FuelStationActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@android:style/Theme.Black"
             android:label="Spare Sprit">
             <intent-filter>
@@ -20,6 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FuelStationActivity" />
+        <activity android:name=".SettingsActivity" />
+
 
     </application>
     <uses-sdk android:minSdkVersion="8" />

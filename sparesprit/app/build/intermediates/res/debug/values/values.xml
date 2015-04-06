@@ -32,6 +32,7 @@
     <string name="circle_prompt">Umkreis in KM</string>
     <string name="ed">ED</string>
     <string name="esso">Esso</string>
+    <string name="favorits_header">Favoriten</string>
     <string name="format_string">dd. MMMM</string>
     <string name="fuel_type_prompt">Kraftstoff wählen</string>
     <string name="hem">HEM</string>
@@ -42,10 +43,12 @@
     <string name="omv">OMV</string>
     <string name="orlen">ORLEN</string>
     <string name="q1">Q1</string>
+    <string name="settings_header">Filter</string>
     <string name="shell">Shell</string>
     <string name="sort_by_prompt">Sortieren nach</string>
     <string name="star">Star</string>
     <string name="station">Tankstelle</string>
+    <string name="station_header">Ergebnis</string>
     <string name="total">Total</string>
     <string name="turmoel">Turmöl</string>
     <string name="wikipedia_url">http://de.m.wikipedia.org</string>

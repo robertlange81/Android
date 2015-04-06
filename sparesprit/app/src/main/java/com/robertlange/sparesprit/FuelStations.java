@@ -25,26 +25,6 @@ public final class FuelStations extends Hashtable<Integer, FuelStation> {
 
 	private FuelStations() {
 		super();
-        /*
-		put(Calendar.NOVEMBER, new FuelStation(23, Calendar.NOVEMBER,
-				R.string.sagittarius));
-		put(Calendar.DECEMBER, new FuelStation(22, Calendar.DECEMBER,
-				R.string.capricornus));
-	    */
-        /*
-        put(1, new FuelStation(
-                1,
-                R.string.agip,
-                true,
-                "offen von",
-                "offen bis",
-                new Location(0,0),
-                2.00f,
-                new Address("strasse","2","04275","Leipzig"),
-                "8 Uhr",
-                2.4f/*,
-                R.string.agip*/
-        //));
 	}
 
     public static void setFuelStations(List<FuelStation> fs) {

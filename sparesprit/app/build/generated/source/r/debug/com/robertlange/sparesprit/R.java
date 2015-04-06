@@ -53,22 +53,23 @@ public final class R {
         public static final int virgo=0x7f020022;
     }
     public static final class id {
-        public static final int circle=0x7f060002;
-        public static final int distance=0x7f06000a;
-        public static final int fuel=0x7f060001;
-        public static final int icon=0x7f060007;
-        public static final int linlaHeaderProgress=0x7f060004;
-        public static final int list_item=0x7f060006;
-        public static final int listview=0x7f060005;
-        public static final int openingTimes=0x7f060009;
-        public static final int price=0x7f06000b;
-        public static final int sortBy=0x7f060003;
-        public static final int stationName=0x7f060008;
-        public static final int tableRow1=0x7f060000;
+        public static final int circleSet=0x7f06000a;
+        public static final int distance=0x7f060006;
+        public static final int fuelSet=0x7f060009;
+        public static final int icon=0x7f060003;
+        public static final int linlaHeaderProgress=0x7f060000;
+        public static final int list_item=0x7f060002;
+        public static final int listview=0x7f060001;
+        public static final int openingTimes=0x7f060005;
+        public static final int price=0x7f060007;
+        public static final int sortBySet=0x7f06000b;
+        public static final int stationName=0x7f060004;
+        public static final int townSetAutoComplete=0x7f060008;
     }
     public static final class layout {
         public static final int main=0x7f030000;
         public static final int row=0x7f030001;
+        public static final int settings=0x7f030002;
     }
     public static final class string {
         public static final int agip=0x7f050000;
@@ -83,22 +84,25 @@ public final class R {
         public static final int circle_prompt=0x7f050009;
         public static final int ed=0x7f05000a;
         public static final int esso=0x7f05000b;
-        public static final int format_string=0x7f05000c;
-        public static final int fuel_type_prompt=0x7f05000d;
-        public static final int hem=0x7f05000e;
-        public static final int hoyer=0x7f05000f;
-        public static final int interval=0x7f050010;
-        public static final int jet=0x7f050011;
-        public static final int oil=0x7f050012;
-        public static final int omv=0x7f050013;
-        public static final int orlen=0x7f050014;
-        public static final int q1=0x7f050015;
-        public static final int shell=0x7f050016;
-        public static final int sort_by_prompt=0x7f050017;
-        public static final int star=0x7f050018;
-        public static final int station=0x7f050019;
-        public static final int total=0x7f05001a;
-        public static final int turmoel=0x7f05001b;
-        public static final int wikipedia_url=0x7f05001c;
+        public static final int favorits_header=0x7f05000c;
+        public static final int format_string=0x7f05000d;
+        public static final int fuel_type_prompt=0x7f05000e;
+        public static final int hem=0x7f05000f;
+        public static final int hoyer=0x7f050010;
+        public static final int interval=0x7f050011;
+        public static final int jet=0x7f050012;
+        public static final int oil=0x7f050013;
+        public static final int omv=0x7f050014;
+        public static final int orlen=0x7f050015;
+        public static final int q1=0x7f050016;
+        public static final int settings_header=0x7f050017;
+        public static final int shell=0x7f050018;
+        public static final int sort_by_prompt=0x7f050019;
+        public static final int star=0x7f05001a;
+        public static final int station=0x7f05001b;
+        public static final int station_header=0x7f05001c;
+        public static final int total=0x7f05001d;
+        public static final int turmoel=0x7f05001e;
+        public static final int wikipedia_url=0x7f05001f;
     }
 }

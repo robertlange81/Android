@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="settings_header">Filter</string>
+    <string name="station_header">Ergebnis</string>
+    <string name="favorits_header">Favoriten</string>
+
     <string name="app_name">sparesprit</string>
     <string name="format_string">dd. MMMM</string>
     <string name="interval">%1$s bis %2$s</string>

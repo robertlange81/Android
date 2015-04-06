@@ -51,30 +51,38 @@ ADDED from AndroidManifest.xml:14:5
 		ADDED from AndroidManifest.xml:14:55
 	android:icon
 		ADDED from AndroidManifest.xml:14:18
-activity#com.robertlange.sparesprit.FuelStationActivity
+activity#com.robertlange.sparesprit.MainActivity
 ADDED from AndroidManifest.xml:15:9
 	android:label
-		ADDED from AndroidManifest.xml:17:13
+		ADDED from AndroidManifest.xml:18:13
 	android:theme
+		ADDED from AndroidManifest.xml:17:13
+	android:name
 		ADDED from AndroidManifest.xml:16:13
-	android:name
-		ADDED from AndroidManifest.xml:15:19
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:18:13
+ADDED from AndroidManifest.xml:19:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:19:17
-	android:name
-		ADDED from AndroidManifest.xml:19:25
-category#android.intent.category.LAUNCHER
 ADDED from AndroidManifest.xml:20:17
 	android:name
-		ADDED from AndroidManifest.xml:20:27
+		ADDED from AndroidManifest.xml:20:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:21:17
+	android:name
+		ADDED from AndroidManifest.xml:21:27
+activity#com.robertlange.sparesprit.FuelStationActivity
+ADDED from AndroidManifest.xml:24:9
+	android:name
+		ADDED from AndroidManifest.xml:24:19
+activity#com.robertlange.sparesprit.SettingsActivity
+ADDED from AndroidManifest.xml:25:9
+	android:name
+		ADDED from AndroidManifest.xml:25:19
 uses-sdk
-ADDED from AndroidManifest.xml:25:5
+ADDED from AndroidManifest.xml:29:5
 	android:targetSdkVersion
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
 	android:minSdkVersion
-		ADDED from AndroidManifest.xml:25:15
+		ADDED from AndroidManifest.xml:29:15
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0

@@ -1,0 +1,113 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SettingsActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="Standort" />
+
+    <!-- EditText
+        android:id="@+id/townSet"
+        android:hint="Aktuelle Position"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:ems="10" /-->
+
+    <AutoCompleteTextView
+        android:id="@+id/townSetAutoComplete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:inputType="textPhonetic"
+        android:text="" />
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="Kraftstoff" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:layout_width="0dp"
+        android:ems="10"
+        android:entries="@array/fuel_type_array"
+        android:prompt="@string/fuel_type_prompt"
+        android:id="@+id/fuelSet"
+        android:contentDescription="Kraftstoffart wählen" />
+
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:text="Umkreis in KM" />
+
+    <Spinner
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:ems="10"
+        android:entries="@array/circle_array"
+        android:prompt="@string/circle_prompt"
+        android:id="@+id/circleSet"
+        android:contentDescription="Such-Radius angeben"
+        android:theme="@android:style/Widget.DropDownItem.Spinner" />
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="0.25"
+        android:text="Sortieren nach" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.75"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="5"
+            android:entries="@array/sort_by_array"
+            android:prompt="@string/sort_by_prompt"
+            android:id="@+id/sortBySet"
+            android:contentDescription="Such-Priorität"
+            android:theme="@android:style/Widget.DropDownItem.Spinner" />
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>
