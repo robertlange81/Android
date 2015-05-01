@@ -265,7 +265,7 @@ public final class FuelStation {
      * @param distance
      */
     public void setDistance(float distance) {
-        this.distance = distance;
+        this.distance = (float) (distance + Math.abs(Math.sqrt(Math.max(0,distance - 0.5))));
     }
 
     private java.lang.Object __equalsCalc = null;

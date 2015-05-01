@@ -39,13 +39,11 @@ public class MainActivity extends TabActivity {
             public void onTabChanged(String tabId) {
 
                 int i = getTabHost().getCurrentTab();
-                Log.i("@@@@@@@@ ANN CLICK TAB NUMBER", "------" + i);
-
+                //Log.i("@@@@@@@@ ANN CLICK TAB NUMBER", "------" + i);
                 if (i == 0) {
-                    Log.i("@@@@@@@@@@ Filtersicht", "onClick tab");
-
+                    //Log.i("@@@@@@@@@@ Filtersicht", "onClick tab");
                 } else if (i == 1) {
-                    Log.i("@@@@@@@@@@ Ergebnissicht", "onClick tab");
+                    //Log.i("@@@@@@@@@@ Ergebnissicht", "onClick tab");
                     if(FuelStationActivity.instance != null)
                         FuelStationActivity.instance.refresh();
                 }

@@ -157,34 +157,36 @@ public class FuelStationActivity extends Activity implements
 
         @Override
         protected String doInBackground(String... urls) {
-            String town = "";
-            int fuelPos = 0, circlePos = 0, sortPos = 0;
-            try{
-                getLocationByMobile();
-                town = GetTownByCoord(location);
-                if(SettingsActivity.fuelType != null && SettingsActivity.fuelType.getSelectedItemPosition() >= 0)
-                    fuelPos = SettingsActivity.fuelType.getSelectedItemPosition();
+            if(SettingsActivity.relevantChange) {
+                String town = "";
+                int fuelPos = 0, circlePos = 0, sortPos = 0;
+                try {
+                    getLocationByMobile();
+                    town = GetTownByCoord(location);
+                    if (SettingsActivity.fuelType != null && SettingsActivity.fuelType.getSelectedItemPosition() >= 0)
+                        fuelPos = SettingsActivity.fuelType.getSelectedItemPosition();
 
-                if(SettingsActivity.circle != null && SettingsActivity.circle.getSelectedItemPosition() >= 0)
-                    circlePos = SettingsActivity.circle.getSelectedItemPosition();
+                    if (SettingsActivity.circle != null && SettingsActivity.circle.getSelectedItemPosition() >= 0)
+                        circlePos = SettingsActivity.circle.getSelectedItemPosition();
 
-                if(SettingsActivity.sortBy != null
-                        && SettingsActivity.sortBy.getSelectedItemPosition() >= 0
-                        && SettingsActivity.sortBy.getSelectedItemPosition() <  2)
-                    sortPos = SettingsActivity.sortBy.getSelectedItemPosition();
+                    if (SettingsActivity.sortBy != null
+                            && SettingsActivity.sortBy.getSelectedItemPosition() >= 0
+                            && SettingsActivity.sortBy.getSelectedItemPosition() < 2)
+                        sortPos = SettingsActivity.sortBy.getSelectedItemPosition();
 
-                List<FuelStation> fs = GetDataByCoord(
-                        location,
-                        getResources().getStringArray(R.array.fuel_type_array)[fuelPos],
-                        getResources().getIntArray(R.array.circle_array)[circlePos],
-                        getResources().getStringArray(R.array.sort_by_array)[sortPos]
-                );
-                FuelStations.setFuelStations(fs);
+                    List<FuelStation> fs = GetDataByCoord(
+                            location,
+                            getResources().getStringArray(R.array.fuel_type_array)[fuelPos],
+                            getResources().getIntArray(R.array.circle_array)[circlePos],
+                            getResources().getStringArray(R.array.sort_by_array)[sortPos]
+                    );
+                    FuelStations.setFuelStations(fs);
+                } catch (Exception e) {
+                    return e.getMessage() + e.getCause() + e.getStackTrace();
+                }
+                return town;
             }
-            catch(Exception e){
-                return e.getMessage() + e.getCause() + e.getStackTrace();
-            }
-            return town;
+            return "";
         }
 
         @Override

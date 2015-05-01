@@ -14,6 +14,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
@@ -36,7 +37,7 @@ public class SettingsActivity extends Activity  {
     AlertDialog alertdlg;
     AutoCompleteTextView townSet;
     public static Spinner fuelType, circle, sortBy;
-    public static EditText userTown;
+    public static boolean relevantChange;
     ArrayAdapter<String> adapter;
     String[] townSuggest = {"C","C++","Java",".NET","iPhone","Android","ASP.NET","PHP"};
 
@@ -58,6 +59,18 @@ public class SettingsActivity extends Activity  {
                 android.R.layout.simple_spinner_item, fuelList);
         fuelDataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         fuelType.setAdapter(fuelDataAdapter1);
+        fuelType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                relevantChange = true;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
         sortBy = (Spinner) findViewById(R.id.sortBySet);
         List<String> sortByList = new ArrayList<String>();
@@ -81,6 +94,18 @@ public class SettingsActivity extends Activity  {
                 android.R.layout.simple_spinner_item, circleList);
         circleDataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         circle.setAdapter(circleDataAdapter1);
+        circle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                relevantChange = true;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // your code here
+            }
+
+        });
 
         adapter = new ArrayAdapter<String>
                 (this,android.R.layout.select_dialog_item, townSuggest);
@@ -105,8 +130,20 @@ public class SettingsActivity extends Activity  {
                     AutoCompleteServiceAccessTask task = new AutoCompleteServiceAccessTask();
                     task.execute(new String[]{""});
                 }
+                relevantChange = true;
             }
         });
+
+        relevantChange = true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (relevantChange) {
+            relevantChange = false;
+            return;
+        }
     }
 
     private class AutoCompleteServiceAccessTask extends AsyncTask<String, Void, String> {
@@ -121,7 +158,6 @@ public class SettingsActivity extends Activity  {
         protected String doInBackground(String... urls) {
             try{
                 townList = GetTownListByAutocomplete();
-                Log.i("bla", "bla");
             }
             catch(Exception e){
                 String x = "t";
