@@ -48,7 +48,7 @@
     <string name="sort_by_prompt">Sortieren nach</string>
     <string name="star">Star</string>
     <string name="station">Tankstelle</string>
-    <string name="station_header">Ergebnis</string>
+    <string name="station_header">Umkreis</string>
     <string name="total">Total</string>
     <string name="turmoel">Turmöl</string>
     <string name="wikipedia_url">http://de.m.wikipedia.org</string>

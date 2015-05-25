@@ -32,6 +32,7 @@
         </activity>
         <activity android:name="com.robertlange.sparesprit.FuelStationActivity" />
         <activity android:name="com.robertlange.sparesprit.SettingsActivity" />
+        <activity android:name="com.robertlange.sparesprit.FavoritsActivity" />
     </application>
 
 </manifest>

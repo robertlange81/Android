@@ -77,6 +77,10 @@ activity#com.robertlange.sparesprit.SettingsActivity
 ADDED from AndroidManifest.xml:25:9
 	android:name
 		ADDED from AndroidManifest.xml:25:19
+activity#com.robertlange.sparesprit.FavoritsActivity
+ADDED from AndroidManifest.xml:26:9
+	android:name
+		ADDED from AndroidManifest.xml:26:19
 uses-sdk
 ADDED from AndroidManifest.xml:29:5
 	android:targetSdkVersion

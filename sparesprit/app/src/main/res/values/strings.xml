@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="settings_header">Filter</string>
-    <string name="station_header">Ergebnis</string>
+    <string name="station_header">Umkreis</string>
     <string name="favorits_header">Favoriten</string>
 
     <string name="app_name">sparesprit</string>

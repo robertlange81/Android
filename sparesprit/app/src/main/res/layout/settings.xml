@@ -85,7 +85,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.50"
-        android:ems="10"
+        android:ems="15"
         android:text="Umkreis in KM" />
     </LinearLayout>
 
@@ -107,32 +107,39 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="horizontal" >
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="0.25"
+            android:layout_weight="0.50"
+            android:ems="15"
             android:text="Sortieren nach" />
+
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.75"
         android:orientation="horizontal" >
 
-        <Spinner
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ems="5"
-            android:entries="@array/sort_by_array"
-            android:prompt="@string/sort_by_prompt"
-            android:id="@+id/sortBySet"
-            android:contentDescription="Such-Priorität"
-            android:theme="@android:style/Widget.DropDownItem.Spinner" />
+            android:layout_weight="0.75"
+            android:orientation="horizontal" >
 
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="5"
+                android:entries="@array/sort_by_array"
+                android:prompt="@string/sort_by_prompt"
+                android:id="@+id/sortBySet"
+                android:contentDescription="Such-Priorität"
+                android:theme="@android:style/Widget.DropDownItem.Spinner" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

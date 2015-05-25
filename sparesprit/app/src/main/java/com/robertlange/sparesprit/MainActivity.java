@@ -25,6 +25,7 @@ public class MainActivity extends TabActivity {
         Intent settings = new Intent(this, SettingsActivity.class);
         ts1.setContent(settings);
         tabHost.addTab(ts1);
+
         // zweites Tab: Tankstellen
         TabSpec ts2 = tabHost.newTabSpec("tab-2");
         ts2.setIndicator(getString(R.string.station_header), getResources()
@@ -32,6 +33,14 @@ public class MainActivity extends TabActivity {
         Intent results = new Intent(this, FuelStationActivity.class);
         ts2.setContent(results);
         tabHost.addTab(ts2);
+
+        // drittes Tab: Favoriten
+        TabSpec ts3 = tabHost.newTabSpec("tab-3");
+        ts3.setIndicator(getString(R.string.favorits_header), getResources()
+                .getDrawable(android.R.drawable.btn_star));
+        Intent favs = new Intent(this, FavoritsActivity.class);
+        ts3.setContent(favs);
+        tabHost.addTab(ts3);
 
         getTabHost().setOnTabChangedListener(new TabHost.OnTabChangeListener() {
 
@@ -46,6 +55,9 @@ public class MainActivity extends TabActivity {
                     //Log.i("@@@@@@@@@@ Ergebnissicht", "onClick tab");
                     if(FuelStationActivity.instance != null)
                         FuelStationActivity.instance.refresh();
+                } else if (i == 2) {
+                    //Log.i("@@@@@@@@@@ Favoritensicht", "onClick tab");
+
                 }
 
             }
