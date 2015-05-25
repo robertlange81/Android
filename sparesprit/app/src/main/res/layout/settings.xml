@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-<LinearLayout
+
+    <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
@@ -13,7 +14,8 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.25"
+        android:layout_weight="0.50"
+        android:ems="10"
         android:text="Standort" />
 
     <!-- EditText
@@ -24,18 +26,26 @@
         android:layout_weight="0.75"
         android:ems="10" /-->
 
-    <AutoCompleteTextView
-        android:id="@+id/townSetAutoComplete"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.75"
-        android:layout_marginTop="17dp"
-        android:ems="10"
-        android:inputType="textPhonetic"
-        android:text="" />
-</LinearLayout>
+    </LinearLayout>
 
-<LinearLayout
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <AutoCompleteTextView
+            android:id="@+id/townSetAutoComplete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:layout_marginTop="17dp"
+            android:ems="10"
+            android:inputType="textPhonetic"
+            android:text="" />
+    </LinearLayout>
+
+
+    <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
@@ -43,22 +53,30 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.25"
+        android:layout_weight="0.50"
+        android:ems="10"
         android:text="Kraftstoff" />
 
-    <Spinner
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.75"
-        android:layout_width="0dp"
-        android:ems="10"
-        android:entries="@array/fuel_type_array"
-        android:prompt="@string/fuel_type_prompt"
-        android:id="@+id/fuelSet"
-        android:contentDescription="Kraftstoffart wählen" />
+        android:orientation="horizontal" >
 
-</LinearLayout>
+        <Spinner
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:layout_width="0dp"
+            android:ems="10"
+            android:entries="@array/fuel_type_array"
+            android:prompt="@string/fuel_type_prompt"
+            android:id="@+id/fuelSet"
+            android:contentDescription="Kraftstoffart wählen" />
 
-<LinearLayout
+    </LinearLayout>
+
+    <LinearLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal" >
@@ -66,32 +84,39 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.25"
+        android:layout_weight="0.50"
+        android:ems="10"
         android:text="Umkreis in KM" />
+    </LinearLayout>
 
-    <Spinner
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.75"
-        android:ems="10"
-        android:entries="@array/circle_array"
-        android:prompt="@string/circle_prompt"
-        android:id="@+id/circleSet"
-        android:contentDescription="Such-Radius angeben"
-        android:theme="@android:style/Widget.DropDownItem.Spinner" />
-</LinearLayout>
+        android:orientation="horizontal" >
+        <Spinner
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:ems="10"
+            android:entries="@array/circle_array"
+            android:prompt="@string/circle_prompt"
+            android:id="@+id/circleSet"
+            android:contentDescription="Such-Radius angeben"
+            android:theme="@android:style/Widget.DropDownItem.Spinner" />
+    </LinearLayout>
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
-
-    <TextView
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="0.25"
-        android:text="Sortieren nach" />
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.25"
+            android:text="Sortieren nach" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -108,6 +133,6 @@
             android:id="@+id/sortBySet"
             android:contentDescription="Such-Priorität"
             android:theme="@android:style/Widget.DropDownItem.Spinner" />
+
     </LinearLayout>
-</LinearLayout>
 </LinearLayout>

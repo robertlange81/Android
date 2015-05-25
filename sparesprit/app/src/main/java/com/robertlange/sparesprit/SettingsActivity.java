@@ -126,7 +126,7 @@ public class SettingsActivity extends Activity  {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.length() > 3) {
+                if(s.length() > 2) {
                     AutoCompleteServiceAccessTask task = new AutoCompleteServiceAccessTask();
                     task.execute(new String[]{""});
                 }
@@ -173,7 +173,7 @@ public class SettingsActivity extends Activity  {
                 adapter = new ArrayAdapter<String>
                         (SettingsActivity.this,android.R.layout.select_dialog_item, townSuggest);
                 townSet = (AutoCompleteTextView)findViewById(R.id.townSetAutoComplete);
-                townSet.setThreshold(4);
+                townSet.setThreshold(3);
                 townSet.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
