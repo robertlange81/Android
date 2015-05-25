@@ -35,7 +35,7 @@ import java.util.List;
 public class SettingsActivity extends Activity  {
 
     AlertDialog alertdlg;
-    AutoCompleteTextView townSet;
+    public static AutoCompleteTextView townSet;
     public static Spinner fuelType, circle, sortBy;
     public static boolean relevantChange;
     ArrayAdapter<String> adapter;

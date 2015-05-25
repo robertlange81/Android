@@ -158,11 +158,16 @@ public class FuelStationActivity extends Activity implements
         @Override
         protected String doInBackground(String... urls) {
             if(SettingsActivity.relevantChange) {
-                String town = "";
+                String town = SettingsActivity.townSet.getText().toString();
                 int fuelPos = 0, circlePos = 0, sortPos = 0;
                 try {
                     getLocationByMobile();
-                    town = GetTownByCoord(location);
+                    if(town == null || town == "") {
+                        town = GetTownByCoord(location);
+                    } else {
+                        location = GetCoordByTown(town);
+                    }
+
                     if (SettingsActivity.fuelType != null && SettingsActivity.fuelType.getSelectedItemPosition() >= 0)
                         fuelPos = SettingsActivity.fuelType.getSelectedItemPosition();
 
@@ -212,12 +217,13 @@ public class FuelStationActivity extends Activity implements
             linlaHeaderProgress.setVisibility(View.GONE);
         }
 
-        private Location GetCoordByTown(String town) throws RESTException, JSONException {
+        private android.location.Location GetCoordByTown(String town) throws RESTException, JSONException {
             JSONObject jsonLoc = rest.request(CoordsbytownUri + town, "GET", null);
-            return new Location(
-                    jsonLoc.getDouble("latitude"),
-                    jsonLoc.getDouble("longitude")
-            );
+
+            location.reset();
+            location.setLatitude( jsonLoc.getDouble("latitude") );
+            location.setLongitude( jsonLoc.getDouble("longitude") );
+            return location;
         }
 
         private String GetTownByCoord(android.location.Location loc) throws RESTException, JSONException {
