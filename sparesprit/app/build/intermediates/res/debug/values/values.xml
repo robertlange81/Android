@@ -29,12 +29,12 @@
     <string name="bavaria">Bavaria</string>
     <string name="baywa">Baywa</string>
     <string name="bp">BP</string>
-    <string name="circle_prompt">Umkreis in KM</string>
+    <string name="circle_prompt">Umkreis in KM (Luftlinie)</string>
     <string name="ed">ED</string>
     <string name="esso">Esso</string>
     <string name="favorits_header">Favoriten</string>
     <string name="format_string">dd. MMMM</string>
-    <string name="fuel_type_prompt">Kraftstoff wählen</string>
+    <string name="fuel_type_prompt">Kraftstoffart wählen</string>
     <string name="hem">HEM</string>
     <string name="hoyer">hoyer</string>
     <string name="interval">%1$s bis %2$s</string>
@@ -51,5 +51,4 @@
     <string name="station_header">Umkreis</string>
     <string name="total">Total</string>
     <string name="turmoel">Turmöl</string>
-    <string name="wikipedia_url">http://de.m.wikipedia.org</string>
 </resources>

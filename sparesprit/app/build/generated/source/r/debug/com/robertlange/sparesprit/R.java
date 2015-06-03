@@ -103,6 +103,5 @@ public final class R {
         public static final int station_header=0x7f05001c;
         public static final int total=0x7f05001d;
         public static final int turmoel=0x7f05001e;
-        public static final int wikipedia_url=0x7f05001f;
     }
 }

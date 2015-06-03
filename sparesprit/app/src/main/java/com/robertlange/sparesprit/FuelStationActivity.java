@@ -309,15 +309,16 @@ public class FuelStationActivity extends Activity implements
                     "GET",
                     null
             );
-            JSONArray distanceList1 = jsonGoogle.getJSONArray("rows");
-            JSONArray distanceList2 = jsonGoogle.getJSONArray("elements");
-            for (int h = 0; h < jsonStationList.length(); h++) {
-                JSONObject row = jsonStationList.getJSONObject(h);
+            JSONArray distanceList1 = jsonGoogle.getJSONArray("rows").getJSONObject(0).getJSONArray("elements");
+            for (int h = 0; h < distanceList1.length(); h++) {
+                JSONObject row = distanceList1.getJSONObject(h);
                 JSONArray keys = row.names();
                 JSONArray values = row.toJSONArray(keys);
                 for (int i = 0; i < values.length(); i++) {
                     if (keys.getString(i).equals("distance")) {
-                        psList.get(h).setDistance(Float.parseFloat(values.getString(i)));
+
+                        int x = values.getJSONObject(i).getInt("value");
+                        psList.get(h).setDistance(x*1.0f / 1000);
                     }
                 }
             }

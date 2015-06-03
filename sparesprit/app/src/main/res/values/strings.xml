@@ -7,7 +7,6 @@
     <string name="app_name">sparesprit</string>
     <string name="format_string">dd. MMMM</string>
     <string name="interval">%1$s bis %2$s</string>
-    <string name="wikipedia_url">http://de.m.wikipedia.org</string>
 
     <string name="agip">Agip</string>
     <string name="agravis">Agravis</string>
@@ -32,7 +31,7 @@
     <string name="total">Total</string>
     <string name="turmoel">Turmöl</string>
 
-    <string name="fuel_type_prompt">Kraftstoff wählen</string>
+    <string name="fuel_type_prompt">Kraftstoffart wählen</string>
     <string-array name="fuel_type_array">
         <item>fuelPriceE5</item>
         <item>fuelPriceE10</item>
@@ -46,7 +45,7 @@
         <item>Combined</item>
     </string-array>
 
-    <string name="circle_prompt">Umkreis in KM</string>
+    <string name="circle_prompt">Umkreis in KM (Luftlinie)</string>
     <integer-array name="circle_array">
         <item>5</item>
         <item>10</item>

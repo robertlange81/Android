@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.50"
         android:ems="10"
-        android:text="Standort" />
+        android:text="Standort (sonst akuelle Position)" />
 
     <!-- EditText
         android:id="@+id/townSet"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.50"
         android:ems="10"
-        android:text="Kraftstoff" />
+        android:text="Kraftstoffart wählen" />
 
     </LinearLayout>
 
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.50"
         android:ems="15"
-        android:text="Umkreis in KM" />
+        android:text="Umkreis in KM (Luftlinie)" />
     </LinearLayout>
 
     <LinearLayout
