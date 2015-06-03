@@ -162,7 +162,7 @@ public class FuelStationActivity extends Activity implements
                 int fuelPos = 0, circlePos = 0, sortPos = 0;
                 try {
                     getLocationByMobile();
-                    if(town == null || town == "") {
+                    if(town == null || town.equals("")) {
                         town = GetTownByCoord(location);
                     } else {
                         location = GetCoordByTown(town);
@@ -237,16 +237,17 @@ public class FuelStationActivity extends Activity implements
         }
 
         private List<FuelStation> GetDataByCoord(android.location.Location loc, String article, float distance, String sortBy) throws RESTException, JSONException {
-            String requestString = DataByCoordsUri + "&latitude=" + loc.getLatitude() + "&longitude=" + loc.getLongitude()
+            String homeApiRequestString = DataByCoordsUri + "&latitude=" + loc.getLatitude() + "&longitude=" + loc.getLongitude()
                     + "&article=" + article + "&distance=" + distance + "&sortBy=" + sortBy ;
             JSONObject json = rest.request(
-                    requestString,
+                    homeApiRequestString,
                     "GET",
                     null
             );
 
             JSONArray jsonStationList = json.getJSONArray("stationList");
             List<FuelStation> psList = new ArrayList<FuelStation>();
+            List<Location> psLocList = new ArrayList<Location>();
 
             for (int h = 0; h < jsonStationList.length(); h++) {
                 JSONObject row = jsonStationList.getJSONObject(h);
@@ -274,6 +275,7 @@ public class FuelStationActivity extends Activity implements
                                         values.getJSONObject(i).getDouble("latitude"),
                                         values.getJSONObject(i).getDouble("longitude"))
                         );
+                        psLocList.add(ps.getLocation());
                     }
                     else if(keys.getString(i).equals("price")){
                         ps.setPrice((float) values.getDouble(i));
@@ -293,8 +295,31 @@ public class FuelStationActivity extends Activity implements
                         ps.setDistance((float) values.getDouble(i));
                     }
                 }
-
                 psList.add(ps);
+            }
+
+            String googleApiRequestString = "http://maps.googleapis.com/maps/api/distancematrix/json?";
+            googleApiRequestString += "origins=" + loc.getLatitude() + "," + loc.getLongitude();
+            googleApiRequestString += "&destinations=";
+            for(Location l : psLocList) {
+                googleApiRequestString += l.getLatitude() + "," + l.getLongitude() + "%7C";
+            }
+            JSONObject jsonGoogle = rest.request(
+                    googleApiRequestString,
+                    "GET",
+                    null
+            );
+            JSONArray distanceList1 = jsonGoogle.getJSONArray("rows");
+            JSONArray distanceList2 = jsonGoogle.getJSONArray("elements");
+            for (int h = 0; h < jsonStationList.length(); h++) {
+                JSONObject row = jsonStationList.getJSONObject(h);
+                JSONArray keys = row.names();
+                JSONArray values = row.toJSONArray(keys);
+                for (int i = 0; i < values.length(); i++) {
+                    if (keys.getString(i).equals("distance")) {
+                        psList.get(h).setDistance(Float.parseFloat(values.getString(i)));
+                    }
+                }
             }
             return psList;
         }
