@@ -34,7 +34,7 @@
     <string name="esso">Esso</string>
     <string name="favorits_header">Favoriten</string>
     <string name="format_string">dd. MMMM</string>
-    <string name="fuel_type_prompt">Kraftstoffart wählen</string>
+    <string name="fuel_type_prompt">Kraftstoffart</string>
     <string name="hem">HEM</string>
     <string name="hoyer">hoyer</string>
     <string name="interval">%1$s bis %2$s</string>

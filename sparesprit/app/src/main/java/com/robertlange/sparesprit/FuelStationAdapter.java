@@ -9,13 +9,19 @@ package com.robertlange.sparesprit;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,8 +35,10 @@ public class FuelStationAdapter extends BaseAdapter {
 
 	private final List<FuelStation> stationList;
 	private final LayoutInflater inflator;
+    public  static Context contextHolder;
 
 	public FuelStationAdapter(Context context) {
+        contextHolder = context;
 		inflator = LayoutInflater.from(context);
 		stationList = new ArrayList<FuelStation>();
 		// FuelStation fuer alle Monate ermitteln
@@ -95,8 +103,24 @@ public class FuelStationAdapter extends BaseAdapter {
                     .findViewById(R.id.price);
             holder.openingTimes = (TextView) rowView
                     .findViewById(R.id.openingTimes);
+            holder.favorit = (CheckBox) rowView
+                    .findViewById(R.id.favorite);
 
-			rowView.setTag(holder);
+            holder.favorit.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Set<Integer> favorits = FuelStationAdapter.readPrefs("favorits");
+                    if (((CheckBox) v).isChecked()) {
+                        favorits.add(v.getId());
+                    } else {
+                        favorits.remove(v.getId());
+                    }
+                    FuelStationAdapter.savePrefs("favorits", favorits);
+                }
+            });
+
+            rowView.setTag(holder);
 		} else {
 			// Holder bereits vorhanden
 			holder = (ViewHolder) rowView.getTag();
@@ -104,10 +128,17 @@ public class FuelStationAdapter extends BaseAdapter {
 
 		Context context = parent.getContext();
 		FuelStation station = (FuelStation) getItem(position);
+        holder.favorit.setEnabled(true);
+        holder.favorit.setId(station.getId());
+        Set<Integer> favorits = this.readPrefs("favorits");
+        if(favorits.contains(station.getId())) {
+            holder.favorit.setChecked(true);
+        }
+
         holder.icon.setImageResource(station.getIdForDrawable());
 		holder.name.setText(station.getName(context));
         holder.distance.setText(String.format("%.2f", station.getDistance()) + " km");
-        holder.price.setText(String.format("%.2f", station.getPrice()) + " €");
+        holder.price.setText(String.format("%.3f", station.getPrice()) + " €/L");
         holder.openingTimes.setText(station.getOpenFrom() + "-" + station.getOpenTo());
 
 		if (++position >= getCount()) {
@@ -121,5 +152,43 @@ public class FuelStationAdapter extends BaseAdapter {
 	static class ViewHolder {
 		TextView name, distance, price, openingTimes;
 		ImageView icon;
+        CheckBox favorit;
 	}
+
+    public static boolean savePrefs(String name, Set<Integer> set)
+    {
+        SharedPreferences prefs = contextHolder.getSharedPreferences(name, 0);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        String value = "";
+        for(Integer x : set) {
+            value += x.toString() + ";";
+        }
+        editor.putString(name, value);
+
+        return editor.commit();
+    }
+
+    public static Set<Integer> readPrefs(String name)
+    {
+        SharedPreferences prefs = contextHolder.getSharedPreferences(name, 0);
+        String value = prefs.getString(name, null);
+        String[] parts;
+        Set set = new LinkedHashSet();
+
+        if(value != null) {
+            parts = value.split(";");
+        } else {
+            parts = new String[0];
+        }
+
+        for(String x : parts) {
+            try {
+                set.add(Integer.parseInt(x));
+            } catch (Exception ex) {
+                Log.i(ex.getMessage(), "Kann Favorit " + x + " nicht parsen.");
+            }
+        }
+        return set;
+    }
 }

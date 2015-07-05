@@ -74,9 +74,9 @@ public class SettingsActivity extends Activity  {
 
         sortBy = (Spinner) findViewById(R.id.sortBySet);
         List<String> sortByList = new ArrayList<String>();
-        sortByList.add("Preis");
-        sortByList.add("Kilometer");
-        sortByList.add("Kombiniert");
+        sortByList.add("niedrigstem Preis in €");
+        sortByList.add("geringster Entfernung in km");
+        sortByList.add("Kombiniert (Preis + Entfernung)");
         ArrayAdapter<String> sortByDataAdapter1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, sortByList);
         sortByDataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

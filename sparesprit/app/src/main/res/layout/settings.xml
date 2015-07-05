@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.50"
         android:ems="10"
-        android:text="Standort (sonst akuelle Position)" />
+        android:text="Standort" />
 
     <!-- EditText
         android:id="@+id/townSet"

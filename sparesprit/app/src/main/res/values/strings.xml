@@ -31,7 +31,7 @@
     <string name="total">Total</string>
     <string name="turmoel">Turmöl</string>
 
-    <string name="fuel_type_prompt">Kraftstoffart wählen</string>
+    <string name="fuel_type_prompt">Kraftstoffart</string>
     <string-array name="fuel_type_array">
         <item>fuelPriceE5</item>
         <item>fuelPriceE10</item>
