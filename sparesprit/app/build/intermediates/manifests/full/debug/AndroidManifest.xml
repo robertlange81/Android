@@ -23,7 +23,7 @@
         <activity
             android:name="com.robertlange.sparesprit.MainActivity"
             android:label="Spare Sprit"
-            android:theme="@android:style/Theme.Black" >
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

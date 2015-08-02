@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SettingsActivity"
     android:layout_width="fill_parent"
@@ -12,19 +12,18 @@
     android:orientation="horizontal" >
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:ems="10"
+        android:layout_height="@dimen/textview_height"
+        android:layout_width="@dimen/textview_width"
+        android:textSize="@dimen/textview_font_size"
+        android:textStyle="bold"
+        android:shadowColor="@color/text_shadow"
+        android:shadowRadius="@dimen/textview_shadowRadius"
+        android:shadowDx="@dimen/textview_shadowDx"
+        android:shadowDy="@dimen/textview_shadowDy"
+        android:layout_marginBottom="@dimen/textview_layout_marginBottom"
+        android:layout_marginTop="@dimen/textview_layout_marginTop"
         android:text="Standort" />
 
-    <!-- EditText
-        android:id="@+id/townSet"
-        android:hint="Aktuelle Position"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.75"
-        android:ems="10" /-->
 
     </LinearLayout>
 
@@ -36,11 +35,12 @@
         <AutoCompleteTextView
             android:id="@+id/townSetAutoComplete"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight="0.75"
-            android:layout_marginTop="17dp"
-            android:ems="10"
+            android:ems="20"
+            android:color="#FFFFFF"
             android:inputType="textPhonetic"
+            android:background="@drawable/gradient"
             android:text="" />
     </LinearLayout>
 
@@ -51,10 +51,16 @@
     android:orientation="horizontal" >
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:ems="10"
+        android:layout_height="@dimen/textview_height"
+        android:layout_width="@dimen/textview_width"
+        android:textSize="@dimen/textview_font_size"
+        android:textStyle="bold"
+        android:shadowColor="@color/text_shadow"
+        android:shadowRadius="@dimen/textview_shadowRadius"
+        android:shadowDx="@dimen/textview_shadowDx"
+        android:shadowDy="@dimen/textview_shadowDy"
+        android:layout_marginBottom="@dimen/textview_layout_marginBottom"
+        android:layout_marginTop="@dimen/textview_layout_marginTop"
         android:text="Kraftstoffart wählen" />
 
     </LinearLayout>
@@ -65,13 +71,14 @@
         android:orientation="horizontal" >
 
         <Spinner
-            android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:layout_width="0dp"
-            android:ems="10"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:textSize="32sp"
             android:entries="@array/fuel_type_array"
             android:prompt="@string/fuel_type_prompt"
             android:id="@+id/fuelSet"
+            android:background="@drawable/gradient"
             android:contentDescription="Kraftstoffart wählen" />
 
     </LinearLayout>
@@ -82,10 +89,16 @@
     android:orientation="horizontal" >
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:ems="15"
+        android:layout_height="@dimen/textview_height"
+        android:layout_width="@dimen/textview_width"
+        android:textSize="@dimen/textview_font_size"
+        android:textStyle="bold"
+        android:shadowColor="@color/text_shadow"
+        android:shadowRadius="@dimen/textview_shadowRadius"
+        android:shadowDx="@dimen/textview_shadowDx"
+        android:shadowDy="@dimen/textview_shadowDy"
+        android:layout_marginBottom="@dimen/textview_layout_marginBottom"
+        android:layout_marginTop="@dimen/textview_layout_marginTop"
         android:text="Umkreis in KM (Luftlinie)" />
     </LinearLayout>
 
@@ -102,6 +115,7 @@
             android:prompt="@string/circle_prompt"
             android:id="@+id/circleSet"
             android:contentDescription="Such-Radius angeben"
+            android:background="@drawable/gradient"
             android:theme="@android:style/Widget.DropDownItem.Spinner" />
     </LinearLayout>
 
@@ -111,11 +125,16 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="0.50"
-            android:ems="15"
+            android:layout_height="@dimen/textview_height"
+            android:layout_width="@dimen/textview_width"
+            android:textSize="@dimen/textview_font_size"
+            android:textStyle="bold"
+            android:shadowColor="@color/text_shadow"
+            android:shadowRadius="@dimen/textview_shadowRadius"
+            android:shadowDx="@dimen/textview_shadowDx"
+            android:shadowDy="@dimen/textview_shadowDy"
+            android:layout_marginBottom="@dimen/textview_layout_marginBottom"
+            android:layout_marginTop="@dimen/textview_layout_marginTop"
             android:text="Sortieren nach" />
 
     </LinearLayout>
@@ -139,7 +158,8 @@
                 android:prompt="@string/sort_by_prompt"
                 android:id="@+id/sortBySet"
                 android:contentDescription="Such-Priorität"
+                android:background="@drawable/gradient"
                 android:theme="@android:style/Widget.DropDownItem.Spinner" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>

@@ -126,11 +126,11 @@ public class SettingsActivity extends Activity  {
 
             @Override
             public void afterTextChanged(Editable s) {
+                relevantChange = true;
                 if(s.length() > 2) {
                     AutoCompleteServiceAccessTask task = new AutoCompleteServiceAccessTask();
                     task.execute(new String[]{""});
                 }
-                relevantChange = true;
             }
         });
 

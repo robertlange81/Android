@@ -159,6 +159,7 @@ public class FuelStationActivity extends Activity implements
         @Override
         protected String doInBackground(String... urls) {
             if(SettingsActivity.relevantChange) {
+                SettingsActivity.relevantChange = false;
                 String town = SettingsActivity.townSet.getText().toString();
                 int fuelPos = 0, circlePos = 0, sortPos = 0;
                 try {
