@@ -8,12 +8,15 @@ package com.robertlange.sparesprit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -46,9 +49,6 @@ public class SettingsActivity extends Activity  {
 
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
-
-        //userTown = (EditText) findViewById(R.id.townSet);
-        //userTown.setText("Aktuelle Posi", TextView.BufferType.EDITABLE);
 
         fuelType = (Spinner) findViewById(R.id.fuelSet);
         List<String> fuelList = new ArrayList<String>();
@@ -109,6 +109,7 @@ public class SettingsActivity extends Activity  {
 
         adapter = new ArrayAdapter<String>
                 (this,android.R.layout.select_dialog_item, townSuggest);
+
         //Getting the instance of AutoCompleteTextView
         townSet = (AutoCompleteTextView)findViewById(R.id.townSetAutoComplete);
         townSet.setThreshold(1);//will start working from first character
@@ -131,6 +132,27 @@ public class SettingsActivity extends Activity  {
                     task.execute(new String[]{""});
                 }
                 relevantChange = true;
+            }
+        });
+
+        //userTown = (EditText) findViewById(R.id.townSet);
+        //userTown.setText("Aktuelle Posi", TextView.BufferType.EDITABLE);
+        AutoCompleteTextView userTown = (AutoCompleteTextView) findViewById(R.id.townSetAutoComplete);
+        // Check if no view has focus:
+        userTown.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent ke) {
+                if( (ke.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER) )
+                {
+                    //View view = SettingsActivity.this.getCurrentFocus();
+                    if (view != null) {
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                    return true;
+                }
+                return true;
             }
         });
 

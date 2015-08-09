@@ -82,7 +82,7 @@ public class FuelStationActivity extends Activity implements
         c.setCostAllowed(true);
         c.setPowerRequirement(Criteria.POWER_HIGH);
         String provider = lm.getBestProvider(c, true);
-        lm.requestLocationUpdates(provider, 0, 0, locationListener);
+        lm.requestLocationUpdates(provider, 30000, 100, locationListener);
 
         alertdlg = new AlertDialog.Builder(this).create();
         refresh();
