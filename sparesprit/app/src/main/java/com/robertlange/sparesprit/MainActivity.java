@@ -52,11 +52,15 @@ public class MainActivity extends TabActivity {
                 if (i == 0) {
                     //Log.i("@@@@@@@@@@ Filtersicht", "onClick tab");
                 } else if (i == 1) {
+                    SettingsActivity.relevantChange = true;
                     //Log.i("@@@@@@@@@@ Ergebnissicht", "onClick tab");
                     if(FuelStationActivity.instance != null)
                         FuelStationActivity.instance.refresh();
                 } else if (i == 2) {
+                    SettingsActivity.relevantChange = true;
                     //Log.i("@@@@@@@@@@ Favoritensicht", "onClick tab");
+                    if(FavoritsActivity.instance != null)
+                        FavoritsActivity.instance.refresh();
 
                 }
 

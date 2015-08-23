@@ -8,12 +8,15 @@ package com.robertlange.sparesprit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -47,8 +50,34 @@ public class SettingsActivity extends Activity  {
 		super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
-        //userTown = (EditText) findViewById(R.id.townSet);
-        //userTown.setText("Aktuelle Posi", TextView.BufferType.EDITABLE);
+        final AutoCompleteTextView userTown = (AutoCompleteTextView) findViewById(R.id.townSetAutoComplete);
+        // Check if no view has focus:
+        userTown.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View view, int keyCode, KeyEvent ke) {
+                if( (ke.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER) )
+                {
+                    //View view = SettingsActivity.this.getCurrentFocus();
+                    if (view != null) {
+                        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    }
+                }
+                return false;
+            }
+        });
+
+        // set tag to null when an item is tapped
+        userTown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> p, View v, int pos, long id) {
+                //View view = SettingsActivity.this.getCurrentFocus();
+                if (v != null) {
+                    InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(userTown.getWindowToken(), 0);
+                }
+            }
+        });
 
         fuelType = (Spinner) findViewById(R.id.fuelSet);
         List<String> fuelList = new ArrayList<String>();
@@ -97,7 +126,7 @@ public class SettingsActivity extends Activity  {
         circle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                relevantChange = true;
+                // relevantChange = true;
             }
 
             @Override
@@ -130,11 +159,8 @@ public class SettingsActivity extends Activity  {
                     AutoCompleteServiceAccessTask task = new AutoCompleteServiceAccessTask();
                     task.execute(new String[]{""});
                 }
-                relevantChange = true;
             }
         });
-
-        relevantChange = true;
     }
 
     @Override

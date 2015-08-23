@@ -27,6 +27,8 @@ import android.widget.ListView;
 import org.json.*;
 import org.json.JSONException;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -218,8 +220,8 @@ public class FuelStationActivity extends Activity implements
             linlaHeaderProgress.setVisibility(View.GONE);
         }
 
-        private android.location.Location GetCoordByTown(String town) throws RESTException, JSONException {
-            JSONObject jsonLoc = rest.request(CoordsbytownUri + town, "GET", null);
+        private android.location.Location GetCoordByTown(String town) throws RESTException, JSONException, UnsupportedEncodingException {
+            JSONObject jsonLoc = rest.request(CoordsbytownUri + URLEncoder.encode(town, "UTF-8"), "GET", null);
 
             location.reset();
             location.setLatitude( jsonLoc.getDouble("latitude") );
