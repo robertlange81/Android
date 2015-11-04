@@ -61,7 +61,7 @@ public class FuelStationActivity extends Activity implements
         LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(android.location.Location location) {
                 if(location.getTime() > FuelStationActivity.this.location.getTime() +  1000 * 20
-                        && FuelStationActivity.this.location.distanceTo(location) > 50.0)
+                        && FuelStationActivity.this.location.distanceTo(location) > 75.0)
                 {
                     FuelStationActivity.this.location = location;
                     FuelStationActivity.this.accessWebService();
@@ -301,30 +301,33 @@ public class FuelStationActivity extends Activity implements
                 psList.add(ps);
             }
 
-            String googleApiRequestString = "http://maps.googleapis.com/maps/api/distancematrix/json?";
-            googleApiRequestString += "origins=" + loc.getLatitude() + "," + loc.getLongitude();
-            googleApiRequestString += "&destinations=";
-            for(Location l : psLocList) {
-                googleApiRequestString += l.getLatitude() + "," + l.getLongitude() + "%7C";
-            }
-            JSONObject jsonGoogle = rest.request(
-                    googleApiRequestString,
-                    "GET",
-                    null
-            );
-            JSONArray distanceList1 = jsonGoogle.getJSONArray("rows").getJSONObject(0).getJSONArray("elements");
-            for (int h = 0; h < distanceList1.length(); h++) {
-                JSONObject row = distanceList1.getJSONObject(h);
-                JSONArray keys = row.names();
-                JSONArray values = row.toJSONArray(keys);
-                for (int i = 0; i < values.length(); i++) {
-                    if (keys.getString(i).equals("distance")) {
+            if(psList.size() > 0) {
+                String googleApiRequestString = "http://maps.googleapis.com/maps/api/distancematrix/json?";
+                googleApiRequestString += "origins=" + loc.getLatitude() + "," + loc.getLongitude();
+                googleApiRequestString += "&destinations=";
+                for(Location l : psLocList) {
+                    googleApiRequestString += l.getLatitude() + "," + l.getLongitude() + "%7C";
+                }
+                JSONObject jsonGoogle = rest.request(
+                        googleApiRequestString,
+                        "GET",
+                        null
+                );
+                JSONArray distanceList1 = jsonGoogle.getJSONArray("rows").getJSONObject(0).getJSONArray("elements");
+                for (int h = 0; h < distanceList1.length(); h++) {
+                    JSONObject row = distanceList1.getJSONObject(h);
+                    JSONArray keys = row.names();
+                    JSONArray values = row.toJSONArray(keys);
+                    for (int i = 0; i < values.length(); i++) {
+                        if (keys.getString(i).equals("distance")) {
 
-                        int x = values.getJSONObject(i).getInt("value");
-                        psList.get(h).setDistance(x*1.0f / 1000);
+                            int x = values.getJSONObject(i).getInt("value");
+                            psList.get(h).setDistance(x*1.0f / 1000);
+                        }
                     }
                 }
             }
+
             return psList;
         }
     }

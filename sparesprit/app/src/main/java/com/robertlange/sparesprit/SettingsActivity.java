@@ -103,9 +103,9 @@ public class SettingsActivity extends Activity  {
 
         sortBy = (Spinner) findViewById(R.id.sortBySet);
         List<String> sortByList = new ArrayList<String>();
-        sortByList.add("niedrigstem Preis in €");
-        sortByList.add("geringster Entfernung in km");
-        sortByList.add("Kombiniert (Preis + Entfernung)");
+        sortByList.add("Preis in €");
+        sortByList.add("Entfernung in km");
+        sortByList.add("Kombiniert (Preis + km)");
         ArrayAdapter<String> sortByDataAdapter1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, sortByList);
         sortByDataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -159,6 +159,7 @@ public class SettingsActivity extends Activity  {
                     AutoCompleteServiceAccessTask task = new AutoCompleteServiceAccessTask();
                     task.execute(new String[]{""});
                 }
+                relevantChange = true;
             }
         });
     }
