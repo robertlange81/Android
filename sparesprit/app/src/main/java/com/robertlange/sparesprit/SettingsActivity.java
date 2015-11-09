@@ -9,6 +9,7 @@ package com.robertlange.sparesprit;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +23,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -112,6 +114,7 @@ public class SettingsActivity extends Activity  {
         sortBy.setAdapter(sortByDataAdapter1);
 
         circle = (Spinner) findViewById(R.id.circleSet);
+
         List<Integer> circleList = new ArrayList<Integer>();
         circleList.add(5);
         circleList.add(10);

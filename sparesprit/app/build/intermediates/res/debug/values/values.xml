@@ -20,6 +20,28 @@
         <item>Distance</item>
         <item>Combined</item>
     </string-array>
+    <!-- From: file:/C:/Users/rlange/AndroidstudioProjects/sparesprit/app/src/main/res/values/color.xml -->
+    <eat-comment/>
+    <color name="gradient_end">#0022FF</color>
+    <color name="gradient_start">#AAAAFF</color>
+    <color name="spinner_fontColor">#FFFFFFFF</color>
+    <color name="text_shadow">#1F000000</color>
+    <color name="text_shadow_white">#FFFFFF</color>
+    <!-- From: file:/C:/Users/rlange/AndroidstudioProjects/sparesprit/app/src/main/res/values/dimen.xml -->
+    <eat-comment/>
+    <item format="float" name="spinner_fontColor" type="dimen">3.0</item>
+    <dimen name="textview_ball_radius">30dp</dimen>
+    <dimen name="textview_font_size">22sp</dimen>
+    <dimen name="textview_height">30dp</dimen>
+    <dimen name="textview_layout_marginBottom">10dp</dimen>
+    <dimen name="textview_layout_marginLeft">5dp</dimen>
+    <dimen name="textview_layout_marginTop">15dp</dimen>
+    <item format="float" name="textview_shadowDx" type="dimen">3.0</item>
+    <item format="float" name="textview_shadowDy" type="dimen">3.0</item>
+    <item format="float" name="textview_shadowRadius" type="dimen">1.5</item>
+    <dimen name="textview_width">150dp</dimen>
+    <!-- From: file:/C:/Users/rlange/AndroidstudioProjects/sparesprit/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="agip">Agip</string>
     <string name="agravis">Agravis</string>
     <string name="allguth">Allguth</string>
@@ -29,7 +51,7 @@
     <string name="bavaria">Bavaria</string>
     <string name="baywa">Baywa</string>
     <string name="bp">BP</string>
-    <string name="circle_prompt">Umkreis in KM (Luftlinie)</string>
+    <string name="circle_prompt">Umkreis in KM</string>
     <string name="ed">ED</string>
     <string name="esso">Esso</string>
     <string name="favorits_header">Favoriten</string>
@@ -51,4 +73,31 @@
     <string name="station_header">Umkreis</string>
     <string name="total">Total</string>
     <string name="turmoel">Turmöl</string>
+    <!-- From: file:/C:/Users/rlange/AndroidstudioProjects/sparesprit/app/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Black">
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- For the resting Spinner style -->
+        <item name="android:spinnerItemStyle">
+            @style/spinnerItemStyle
+        </item>
+
+        <!-- For each individual Spinner list item once clicked on -->
+        <item name="android:spinnerDropDownItemStyle">
+            @style/spinnerDropDownItemStyle
+        </item>
+
+    </style>
+    <style name="spinnerDropDownItemStyle">
+        <item name="android:padding">20dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="spinnerItemStyle">
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 </resources>

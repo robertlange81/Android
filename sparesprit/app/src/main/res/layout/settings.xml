@@ -3,28 +3,33 @@
     tools:context=".SettingsActivity"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="1">
 
 
     <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
-
-    <TextView
-        android:layout_width="0dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:ems="10"
-        android:text="Standort" />
+        android:orientation="horizontal" >
 
-    <!-- EditText
-        android:id="@+id/townSet"
-        android:hint="Aktuelle Position"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.75"
-        android:ems="10" /-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textview_height"
+            android:layout_weight="2"
+            android:ems="10"
+            android:text="Standort"
+            android:layout_marginTop="@dimen/textview_layout_marginTop"
+            android:layout_marginLeft="@dimen/textview_layout_marginLeft"
+            android:textSize="@dimen/textview_font_size"
+            android:textStyle="bold" />
+
+        <!-- EditText
+            android:id="@+id/townSet"
+            android:hint="Aktuelle Position"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.75"
+            android:ems="10" /-->
 
     </LinearLayout>
 
@@ -36,26 +41,33 @@
         <AutoCompleteTextView
             android:id="@+id/townSetAutoComplete"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_weight="0.75"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="2dp"
             android:ems="10"
-            android:inputType="textPhonetic"
-            android:text="" />
+            android:inputType="textPhonetic|text"
+            android:autoText="false"
+            android:capitalize="characters"
+            android:elegantTextHeight="true"
+            android:hint="Aktuelle Position" />
     </LinearLayout>
 
 
     <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
-
-    <TextView
-        android:layout_width="0dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:ems="10"
-        android:text="Kraftstoffart wählen" />
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textview_height"
+            android:layout_weight="0.50"
+            android:ems="10"
+            android:text="Kraftstoffart"
+            android:layout_marginLeft="@dimen/textview_layout_marginLeft"
+            android:layout_marginTop="@dimen/textview_layout_marginTop"
+            android:textSize="@dimen/textview_font_size"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -65,28 +77,35 @@
         android:orientation="horizontal" >
 
         <Spinner
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="0.75"
             android:layout_width="0dp"
             android:ems="10"
             android:entries="@array/fuel_type_array"
             android:prompt="@string/fuel_type_prompt"
             android:id="@+id/fuelSet"
-            android:contentDescription="Kraftstoffart wählen" />
+            android:contentDescription="Kraftstoffart"
+            android:layout_marginTop="2dp"
+            android:background="#aa57aa26"
+            android:paddingLeft="10dp" />
 
     </LinearLayout>
 
     <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal" >
-
-    <TextView
-        android:layout_width="0dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.50"
-        android:ems="15"
-        android:text="Umkreis in KM (Luftlinie)" />
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="@dimen/textview_height"
+            android:layout_weight="0.50"
+            android:ems="15"
+            android:text="Umkreis in KM"
+            android:layout_marginLeft="@dimen/textview_layout_marginLeft"
+            android:layout_marginTop="@dimen/textview_layout_marginTop"
+            android:textSize="@dimen/textview_font_size"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -95,14 +114,17 @@
         android:orientation="horizontal" >
         <Spinner
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight="0.75"
             android:ems="10"
             android:entries="@array/circle_array"
             android:prompt="@string/circle_prompt"
             android:id="@+id/circleSet"
             android:contentDescription="Such-Radius angeben"
-            android:theme="@android:style/Widget.DropDownItem.Spinner" />
+            android:theme="@android:style/Widget.DropDownItem.Spinner"
+            android:layout_marginTop="2dp"
+            android:background="#dddd3034"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -112,11 +134,14 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_height="@dimen/textview_height"
             android:layout_weight="0.50"
             android:ems="15"
-            android:text="Sortieren nach" />
+            android:text="Sortieren nach"
+            android:layout_marginLeft="@dimen/textview_layout_marginLeft"
+            android:layout_marginTop="@dimen/textview_layout_marginTop"
+            android:textSize="@dimen/textview_font_size"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -124,22 +149,32 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
+        <Spinner
+            android:textSize="20sp"
+            android:gravity="left"
+            android:textColor="@color/spinner_fontColor"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:ems="5"
+            android:entries="@array/sort_by_array"
+            android:prompt="@string/sort_by_prompt"
+            android:id="@+id/sortBySet"
+            android:contentDescription="Such-Priorität"
+            android:theme="@android:style/Widget.DropDownItem.Spinner"
+            android:layout_marginTop="2dp"
+            android:background="#cd2d4cff" />
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.75"
-            android:orientation="horizontal" >
-
-            <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="5"
-                android:entries="@array/sort_by_array"
-                android:prompt="@string/sort_by_prompt"
-                android:id="@+id/sortBySet"
-                android:contentDescription="Such-Priorität"
-                android:theme="@android:style/Widget.DropDownItem.Spinner" />
-        </LinearLayout>
     </LinearLayout>
+
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:id="@+id/settingButton"
+        android:layout_weight="280"
+        android:layout_marginTop="40dp"
+        android:text="Suche starten"
+        android:textSize="30dp"
+        android:layout_gravity="bottom" />
 </LinearLayout>

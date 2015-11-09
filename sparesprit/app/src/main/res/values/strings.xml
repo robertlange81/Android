@@ -45,7 +45,7 @@
         <item>Combined</item>
     </string-array>
 
-    <string name="circle_prompt">Umkreis in KM (Luftlinie)</string>
+    <string name="circle_prompt">Umkreis in KM</string>
     <integer-array name="circle_array">
         <item>5</item>
         <item>10</item>
