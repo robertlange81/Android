@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textview_height">30dp</dimen>
+    <dimen name="textview_width">150dp</dimen>
+    <dimen name="textview_font_size">22sp</dimen>
+    <dimen name="textview_ball_radius">30dp</dimen>
+    <dimen name="textview_layout_marginTop">15dp</dimen>
+    <dimen name="textview_layout_marginBottom">10dp</dimen>
+    <dimen name="textview_layout_marginLeft">5dp</dimen>
+    <item name="textview_shadowRadius" format="float" type="dimen">1.5</item>
+    <item name="textview_shadowDx" format="float" type="dimen">3.0</item>
+    <item name="textview_shadowDy" format="float" type="dimen">3.0</item>
+    <item name="spinner_fontColor" format="float" type="dimen">3.0</item>
+</resources>
