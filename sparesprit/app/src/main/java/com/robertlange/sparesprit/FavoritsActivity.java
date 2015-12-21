@@ -8,6 +8,7 @@ package com.robertlange.sparesprit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Criteria;
@@ -118,10 +119,15 @@ public class FavoritsActivity extends Activity implements
         c.setBearingRequired(false);
         c.setCostAllowed(true);
         c.setPowerRequirement(Criteria.POWER_HIGH);
+
         String provider = lm.getBestProvider(c, true);
         if(location == null || (SystemClock.elapsedRealtime() - location.getTime() > 1000 * 20
                 && FavoritsActivity.this.location.distanceTo(location) > 50.0)) {
             location = lm.getLastKnownLocation(provider);
+            if(location == null) {
+                LocationManager mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                location = mlocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            }
         }
         return location;
     }

@@ -5,17 +5,23 @@ package com.robertlange.sparesprit;
  */
 import android.app.TabActivity;
 import android.content.Intent;
+import android.location.*;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
-public class MainActivity extends TabActivity {
+public class MainActivity extends TabActivity implements LocationListener {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         final TabHost tabHost = getTabHost();
         // erstes Tab: Einstellungen
@@ -66,5 +72,25 @@ public class MainActivity extends TabActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        String x = "1";
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        String x = "1";
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+        String x = "1";
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        String x = "1";
     }
 }

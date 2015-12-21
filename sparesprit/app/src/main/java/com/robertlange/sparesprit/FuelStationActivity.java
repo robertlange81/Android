@@ -8,6 +8,7 @@ package com.robertlange.sparesprit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Criteria;
 import android.location.LocationListener;
@@ -45,8 +46,10 @@ public class FuelStationActivity extends Activity implements
 	private FuelStationAdapter adapter;
     public LocationManager lm;
     private android.location.Location location;
+    private static boolean isWorking = false;
     public static FuelStationActivity instance;
     AlertDialog alertdlg;
+    Input input;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -109,7 +112,30 @@ public class FuelStationActivity extends Activity implements
                 && FuelStationActivity.this.location.distanceTo(location) > 50.0)) {
             location = lm.getLastKnownLocation(provider);
         }
+        // telnet localhost 5554 und geo fix 12.3833 51.3667
+        if(location == null) {
+            List<String> providers = lm.getAllProviders();
+            location = getLastKnownLocation();
+        }
+
         return location;
+    }
+
+    private android.location.Location getLastKnownLocation() {
+        LocationManager mLocationManager = (LocationManager)getApplicationContext().getSystemService(LOCATION_SERVICE);
+        List<String> providers = mLocationManager.getProviders(true);
+        android.location.Location bestLocation = null;
+        for (String provider : providers) {
+            android.location.Location l = mLocationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
     }
 
     @Override
@@ -136,8 +162,16 @@ public class FuelStationActivity extends Activity implements
     }
 
     public void accessWebService() {
-        FuelServiceAccessTask task = new FuelServiceAccessTask();
-        task.execute(new String[] { ""});
+        if(!isWorking) {
+            isWorking = true;
+            input = new Input();
+            input.setTown(SettingsActivity.townSet.getText().toString());
+            input.setPosCircle(SettingsActivity.circle.getSelectedItemPosition());
+            input.setPosFuelType(SettingsActivity.fuelType.getSelectedItemPosition());
+            input.setPosSort(SettingsActivity.sortBy.getSelectedItemPosition());
+            FuelServiceAccessTask task = new FuelServiceAccessTask();
+            task.execute(new String[]{""});
+        }
     }
 
     private class FuelServiceAccessTask extends AsyncTask<String, Void, String> {
@@ -156,12 +190,13 @@ public class FuelStationActivity extends Activity implements
         @Override
         protected void onPreExecute() {
             linlaHeaderProgress.setVisibility(View.VISIBLE);
+            isWorking = false;
         }
 
         @Override
         protected String doInBackground(String... urls) {
             if(SettingsActivity.relevantChange) {
-                String town = SettingsActivity.townSet.getText().toString();
+                String town = input.getTown().toString();
                 int fuelPos = 0, circlePos = 0, sortPos = 0;
                 try {
                     getLocationByMobile();
@@ -171,16 +206,16 @@ public class FuelStationActivity extends Activity implements
                         location = GetCoordByTown(town);
                     }
 
-                    if (SettingsActivity.fuelType != null && SettingsActivity.fuelType.getSelectedItemPosition() >= 0)
-                        fuelPos = SettingsActivity.fuelType.getSelectedItemPosition();
+                    if (SettingsActivity.fuelType != null && input.getPosFuelType() >= 0)
+                        fuelPos = input.getPosFuelType();
 
-                    if (SettingsActivity.circle != null && SettingsActivity.circle.getSelectedItemPosition() >= 0)
-                        circlePos = SettingsActivity.circle.getSelectedItemPosition();
+                    if (SettingsActivity.circle != null && input.getPosCircle() >= 0)
+                        circlePos = input.getPosCircle();
 
                     if (SettingsActivity.sortBy != null
-                            && SettingsActivity.sortBy.getSelectedItemPosition() >= 0
-                            && SettingsActivity.sortBy.getSelectedItemPosition() < 2)
-                        sortPos = SettingsActivity.sortBy.getSelectedItemPosition();
+                            && input.getPosSort() >= 0
+                            && input.getPosSort() < 2)
+                        sortPos = input.getPosSort();
 
                     List<FuelStation> fs = GetDataByCoord(
                             location,
