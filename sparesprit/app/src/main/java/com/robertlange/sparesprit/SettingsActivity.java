@@ -8,7 +8,9 @@ package com.robertlange.sparesprit;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.TabActivity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -45,6 +48,7 @@ public class SettingsActivity extends Activity  {
     public static boolean relevantChange;
     ArrayAdapter<String> adapter;
     String[] townSuggest = {"C","C++","Java",".NET","iPhone","Android","ASP.NET","PHP"};
+    public static Button start;
 
     @Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -158,11 +162,20 @@ public class SettingsActivity extends Activity  {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.length() > 2) {
+                if (s.length() > 2) {
                     AutoCompleteServiceAccessTask task = new AutoCompleteServiceAccessTask();
                     task.execute(new String[]{""});
                 }
                 relevantChange = true;
+            }
+        });
+
+        start = (Button)findViewById(R.id.settingButton);
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TabActivity tabs = (TabActivity) getParent();
+                tabs.getTabHost().setCurrentTab(1);
             }
         });
     }
