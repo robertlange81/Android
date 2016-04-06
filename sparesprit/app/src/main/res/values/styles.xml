@@ -4,20 +4,6 @@
     <style name="AppBaseTheme" parent="android:Theme.Black">
     </style>
 
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-
-        <!-- For the resting Spinner style -->
-        <item name="android:spinnerItemStyle">
-            @style/spinnerItemStyle
-        </item>
-
-        <!-- For each individual Spinner list item once clicked on -->
-        <item name="android:spinnerDropDownItemStyle">
-            @style/spinnerDropDownItemStyle
-        </item>
-
-    </style>
 
     <style name="spinnerItemStyle">
         <item name="android:padding">10dp</item>
@@ -30,5 +16,230 @@
         <item name="android:textSize">30sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
+
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorTitle</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorLink</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ResultButtonStyle" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorAccent</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+
+    <style name="ResultButtonStyle1" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorAccentLight</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+
+    <style name="ResultButtonStyle2" parent="Widget.AppCompat.Button.Colored">
+        <item name="colorButtonNormal">@color/colorAccentBlue</item>
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <!-- Inline text styles -->
+    <style name="text_h2">
+        <item name="android:layout_marginTop">@dimen/text_margin_top_h2</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">@dimen/text_size_h2</item>
+    </style>
+
+    <style name="text_content">
+        <item name="android:layout_margin">@dimen/text_margin</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">@dimen/text_size_content</item>
+    </style>
+
+    <style name="text_hello_sage">
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="text_link">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_content</item>
+        <item name="android:textColor">@color/colorLink</item>
+    </style>
+
+    <style name="text_input">
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_input</item>
+    </style>
+
+    <style name="text_input_small">
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
+    <style name="input_wage">
+        <item name="android:layout_marginLeft">4dp</item>
+    </style>
+
+    <style name="tax_radio">
+
+    </style>
+
+    <!-- Input layout styles -->
+
+    <style name="input_label">
+        <item name="android:textSize">@dimen/text_size_input</item>
+        <item name="android:layout_marginLeft">@dimen/input_margin</item>
+        <item name="android:layout_marginBottom">@dimen/text_margin_bottom</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="wage_period_value">
+        <item name="android:text">als Jahresgehalt</item>
+        <item name="android:layout_marginLeft">@dimen/textview_layout_marginLeft_wage_period</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">@dimen/text_size_input</item>
+    </style>
+
+    <style name="taxclass_slider">
+        <item name="android:max">5</item>
+        <item name="android:progress">0</item>
+        <item name="android:layout_marginLeft">80px</item>
+        <item name="android:layout_marginTop">-8px</item>
+    </style>
+
+    <style name="taxclass_value">
+        <item name="android:text">1</item>
+        <item name="android:layout_marginLeft">@dimen/textview_layout_marginLeft</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">@dimen/text_size_input</item>
+    </style>
+
+    <style name="children_slider">
+        <item name="android:max">10</item>
+        <item name="android:progress">0</item>
+        <item name="android:layout_marginLeft">80px</item>
+        <item name="android:layout_marginTop">-8px</item>
+    </style>
+
+    <style name="children_value">
+        <item name="android:text">0.0</item>
+        <item name="android:layout_marginLeft">@dimen/textview_layout_marginLeft</item>
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_input</item>
+    </style>
+
+    <style name="calculate">
+        <item name="android:textColor">@color/text_white</item>
+        <item name="android:background">@color/colorLink</item>
+        <item name="android:textSize">@dimen/action_button_text_size</item>
+    </style>
+
+    <!-- Result styles -->
+    <style name="text_h1">
+        <item name="android:layout_margin">@dimen/text_margin</item>
+        <item name="android:layout_marginBottom">@dimen/text_margin_bottom_h1</item>
+        <item name="android:textColor">@color/text_grey</item>
+        <item name="android:textSize">@dimen/text_size_h1</item>
+    </style>
+
+    <style name="hr">
+        <item name="android:layout_margin">@dimen/margin_result_hr</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/text_grey</item>
+    </style>
+
+    <style name="result_data_row">
+        <item name="android:padding">@dimen/text_margin</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="result_main_label">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_result_medium</item>
+    </style>
+
+    <style name="result_main_value">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_result_big</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="result_cat_label">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_result_medium</item>
+    </style>
+
+    <style name="result_cat_value">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_result_big</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="result_data_label">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_result_small</item>
+        <item name="android:paddingLeft">@dimen/text_margin_result_employee_data_label</item>
+    </style>
+
+    <style name="result_data_value">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/text_darkgrey</item>
+        <item name="android:textSize">@dimen/text_size_result_medium</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="result_btn_again">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">right</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textSize">@dimen/text_size_result_small</item>
+    </style>
+
 
 </resources>
