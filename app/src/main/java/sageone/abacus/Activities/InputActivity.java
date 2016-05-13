@@ -51,6 +51,8 @@ import sageone.abacus.Models.CalculationInput;
 import sageone.abacus.Models.CalculationInputData;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.Models.Insurances;
+import sageone.abacus.Models.LocationData;
+import sageone.abacus.Models.TownData;
 import sageone.abacus.R;
 import sageone.abacus.Models.WebService;
 
@@ -454,6 +456,26 @@ public class InputActivity extends AppCompatActivity
         MessageHelper.snackbar(this, message, Snackbar.LENGTH_INDEFINITE);
     }
 
+    @Override
+    public void responseFinishLocation(LocationData location) {
+        LocationData l = location;
+    }
+
+    @Override
+    public void responseFailedLocation(String message) {
+
+    }
+
+    @Override
+    public void responseFinishTown(TownData town) {
+
+    }
+
+    @Override
+    public void responseFailedTown(String message) {
+
+    }
+
 
     @Override
     public void responseFinishInsurances(Insurances insurances) { }
@@ -467,16 +489,7 @@ public class InputActivity extends AppCompatActivity
      */
     private boolean _setAndValidateData()
     {
-        helper.data.Berechnungsart = selectedWageType;
-        helper.data.Brutto = selectedWage;
-        helper.data.Zeitraum = selectedWagePeriod;
-        helper.data.AbrJahr = Calendar.getInstance().get(Calendar.YEAR);
-        helper.data.StFreibetrag = selectedTaxFree;
-        helper.data.StKl = selectedTaxClass;
-        helper.setBundesland(selectedState);
-        helper.data.KKBetriebsnummer = selectedInsuranceId;
-        helper.data.Kirche = selectedChurchTax;
-        helper.setKindFrei(selectedChildAmount);
+        helper.data.town = "Leipzig";
 
         String message;
 

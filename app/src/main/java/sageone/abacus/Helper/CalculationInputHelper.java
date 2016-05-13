@@ -37,15 +37,6 @@ public class CalculationInputHelper
      */
     public boolean validate() throws ValidationException
     {
-        if (_nullOrEmpty(data.Brutto)) {
-            String message = a.getResources().getString(R.string.validation_error_wage);
-            throw new ValidationException(message);
-        }
-        if (data.KKBetriebsnummer == -1) {
-            String message = a.getResources().getString(R.string.validation_error_insurance);
-            throw new ValidationInsuranceException(message);
-        }
-
         return true;
     }
 
@@ -62,28 +53,6 @@ public class CalculationInputHelper
     }
 
 
-    /**
-     * Prepares the child u23 boolean value.
-     *
-     * @param value
-     */
-    public void setKindFrei(Double value)
-    {
-        data.KindFrei = value;
-        data.KindU23 = 0 < value ? true : false;
-    }
-
-
-    /**
-     * Help function for translate
-     * the states.
-     *
-     * @param state
-     */
-    public void setBundesland(String state)
-    {
-        data.Bundesland = this.translateState(state);
-    }
 
 
     /**

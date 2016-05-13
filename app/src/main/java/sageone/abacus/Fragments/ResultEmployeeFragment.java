@@ -142,18 +142,18 @@ public class ResultEmployeeFragment extends Fragment
      */
     private void _setViewData(Calculation data)
     {
-        txtTitle.setText(_formatCurrency(data.data.Netto));
-        txtWageGross.setText(_formatCurrency(data.data.LohnsteuerPflBrutto));
-        txtWageNet.setText(_formatCurrency(data.data.Netto));
-        txtTax.setText(_formatCurrency(data.data.Steuern));
-        txtWageTax.setText(_formatCurrency(data.data.Lohnsteuer));
-        txtSolidarity.setText(_formatCurrency(data.data.Soli));
-        txtChurchTax.setText(_formatCurrency(data.data.Kirchensteuer));
-        txtSocial.setText(_formatCurrency(data.data.AGAnteil));
-        txtPension.setText(_formatCurrency(data.data.Rentenversicherung_AN));
-        txtUnemployment.setText(_formatCurrency(data.data.Arbeitslosenversicherung_AN));
-        txtCare.setText(_formatCurrency(data.data.Pflegeversicherung_AN));
-        txtHealth.setText(_formatCurrency(data.data.Krankenversicherung_AN));
+        txtTitle.setText(_formatCurrency("1"));
+        txtWageGross.setText(_formatCurrency("1"));
+        txtWageNet.setText(_formatCurrency("1"));
+        txtTax.setText(_formatCurrency("1"));
+        txtWageTax.setText(_formatCurrency("1"));
+        txtSolidarity.setText(_formatCurrency("1"));
+        txtChurchTax.setText(_formatCurrency("1"));
+        txtSocial.setText(_formatCurrency("1"));
+        txtPension.setText(_formatCurrency("1"));
+        txtUnemployment.setText(_formatCurrency("1"));
+        txtCare.setText(_formatCurrency("1"));
+        txtHealth.setText(_formatCurrency("1"));
     }
 
 

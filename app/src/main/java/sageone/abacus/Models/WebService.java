@@ -14,6 +14,7 @@ import sageone.abacus.Interfaces.ApiCallbackListener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.location.Location;
 import android.util.Log;
 
 import retrofit2.Call;
@@ -52,7 +53,7 @@ public class WebService
         String proto = context.getResources().getString(R.string.api_uri_proto);
         String host = context.getResources().getString(R.string.api_uri_host);
         String url  = context.getResources().getString(R.string.api_uri_base);
-        String credentials = context.getResources().getString(R.string.basic_credentials);
+        String credentials = null;
         int timeout = context.getResources().getInteger(R.integer.api_connection_timeout);
 
         String apiUriBase = proto + host + url;
@@ -127,6 +128,82 @@ public class WebService
 
             @Override
             public void onFailure(Call<Insurances> call, Throwable t) {
+                String err = t.getMessage().toString();
+                webserviceListener.responseFailedInsurances(err);
+            }
+        });
+    }
+
+    /**
+     * Fetch Coords
+     * by calling web service via rest client.
+     */
+    public void Location(String loc)
+    {
+        Call<LocationData> call = apiService.Location(loc);
+
+        call.enqueue(new Callback<LocationData>() {
+            @Override
+            public void onResponse(Call<LocationData> call, Response<LocationData> response) {
+
+                int code = response.code();
+                String message = null;
+
+                switch (code) {
+                    case 200:
+                        webserviceListener.responseFinishLocation(response.body());
+                        break;
+                    case 401:
+                        message = context.getResources().getString(R.string.exception_http_auth);
+                        webserviceListener.responseFailedLocation(message);
+                        break;
+                    default:
+                        message = context.getResources().getString(R.string.exception_status_code);
+                        webserviceListener.responseFailedLocation(message);
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LocationData> call, Throwable t) {
+                String err = t.getMessage().toString();
+                webserviceListener.responseFailedInsurances(err);
+            }
+        });
+    }
+
+    /**
+     * Fetch Town
+     * by calling web service via rest client.
+     */
+    public void Town(double lat, double lon)
+    {
+        Call<TownData> call = apiService.TownByCoords(lat, lon);
+
+        call.enqueue(new Callback<TownData>() {
+            @Override
+            public void onResponse(Call<TownData> call, Response<TownData> response) {
+
+                int code = response.code();
+                String message = null;
+
+                switch (code) {
+                    case 200:
+                        webserviceListener.responseFinishTown(response.body());
+                        break;
+                    case 401:
+                        message = context.getResources().getString(R.string.exception_http_auth);
+                        webserviceListener.responseFailedTown(message);
+                        break;
+                    default:
+                        message = context.getResources().getString(R.string.exception_status_code);
+                        webserviceListener.responseFailedTown(message);
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TownData> call, Throwable t) {
                 String err = t.getMessage().toString();
                 webserviceListener.responseFailedInsurances(err);
             }

@@ -103,9 +103,9 @@ public class ResultHomeFragment extends Fragment
 
         try {
             wageGross.setText(
-                    FormatHelper.currency(data.data.LohnsteuerPflBrutto));
+                    FormatHelper.currency("1"));
             wageNet.setText(
-                    FormatHelper.currency(data.data.Netto));
+                    FormatHelper.currency("1"));
         } catch (Exception e) {}
 
         return view;
@@ -135,25 +135,6 @@ public class ResultHomeFragment extends Fragment
         compareWageGross = (TextView) view.findViewById(R.id.compare_intro_wage_gross);
         compareWageNet = (TextView) view.findViewById(R.id.compare_intro_wage_net);
 
-        // differences
-        wageDiffGross = (TextView) view.findViewById(R.id.wage_diff_gross);
-        wageDiffGross.setText(FormatHelper.percent(
-                dataResult.data.LohnsteuerPflBrutto, dataCompare.data.LohnsteuerPflBrutto));
-
-        wageDiffNet = (TextView) view.findViewById(R.id.wage_diff_net);
-        wageDiffNet.setText(FormatHelper.percent(
-                dataResult.data.Netto, dataCompare.data.Netto));
-
-        try {
-            wageGross.setText(
-                    FormatHelper.currency(dataResult.data.LohnsteuerPflBrutto));
-            wageNet.setText(
-                    FormatHelper.currency(dataResult.data.Netto));
-            compareWageGross.setText(
-                    FormatHelper.currency(dataCompare.data.LohnsteuerPflBrutto));
-            compareWageNet.setText(
-                    FormatHelper.currency(dataCompare.data.Netto));
-        } catch (Exception e) { }
 
         return view;
     }

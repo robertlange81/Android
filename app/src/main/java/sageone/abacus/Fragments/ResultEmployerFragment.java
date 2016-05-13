@@ -143,18 +143,18 @@ public class ResultEmployerFragment extends Fragment
      */
     private void _setViewData(Calculation data)
     {
-        txtTitle.setText(_formatCurrency(data.data.Abgaben_AG));
-        txtWageGross.setText(_formatCurrency(data.data.LohnsteuerPflBrutto));
-        txtCumCat.setText(_formatCurrency(data.data.Abgaben_AG));
-        txtSocialEmployer.setText(_formatCurrency(data.data.AGAnteil));
-        txtPensionEmployer.setText(_formatCurrency(data.data.Rentenversicherung_AG));
-        txtUnemploymentEmployer.setText(_formatCurrency(data.data.Arbeitslosenversicherung_AG));
-        txtCareEmployer.setText(_formatCurrency(data.data.Pflegeversicherung_AG));
-        txtHealthEmployer.setText(_formatCurrency(data.data.Krankenversicherung_AG));
+        txtTitle.setText(_formatCurrency("1"));
+        txtWageGross.setText(_formatCurrency("1"));
+        txtCumCat.setText(_formatCurrency("1"));
+        txtSocialEmployer.setText(_formatCurrency("1"));
+        txtPensionEmployer.setText(_formatCurrency("1"));
+        txtUnemploymentEmployer.setText(_formatCurrency("1"));
+        txtCareEmployer.setText(_formatCurrency("1"));
+        txtHealthEmployer.setText(_formatCurrency("1"));
 
-        txtContribution.setText(_formatCurrency(data.data.Umlagen_AG));
-        txtContribution1.setText(_formatCurrency(data.data.Umlage1));
-        txtContribution2.setText(_formatCurrency(data.data.Umlage2));
+        txtContribution.setText(_formatCurrency("1"));
+        txtContribution1.setText(_formatCurrency("1"));
+        txtContribution2.setText(_formatCurrency("1"));
     }
 
 
