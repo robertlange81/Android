@@ -1,20 +1,11 @@
 package sageone.abacus.Models;
 
 import retrofit2.Response;
-import sageone.abacus.Activities.HelloActivity;
-import sageone.abacus.Activities.InputActivity;
-import sageone.abacus.Exceptions.StatusCodeException;
-import sageone.abacus.Exceptions.WebServiceFailureException;
 import sageone.abacus.Extensions.RetrofitRestClient;
-import sageone.abacus.Helper.MessageHelper;
-import sageone.abacus.Helper.SystemHelper;
 import sageone.abacus.Interfaces.AbacusApiInterface;
 import sageone.abacus.Interfaces.ApiCallbackListener;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.location.Location;
 import android.util.Log;
 
 import retrofit2.Call;
@@ -69,14 +60,14 @@ public class WebService
      *
      * @param data
      */
-    public void Calculate(CalculationInput data)
+    public void GetStationList(InputWrapper data)
     {
         Log.v("ServiceCall", "Initialize calculation ..");
-        call = apiService.Calc(data);
+        call = apiService.DataByCoords(data.data);
 
-        call.enqueue(new Callback<Calculation>() {
+        call.enqueue(new Callback<FuelStations>() {
             @Override
-            public void onResponse(Call<Calculation> call, Response<Calculation> response) {
+            public void onResponse(Call<FuelStations> call, Response<FuelStations> response) {
                 int code = response.code();
 
                 if (response.isSuccess()) {
@@ -87,7 +78,7 @@ public class WebService
             }
 
             @Override
-            public void onFailure(Call<Calculation> call, Throwable throwable) {
+            public void onFailure(Call<FuelStations> call, Throwable throwable) {
                 Log.e("WebService", "Failure on calculation. " + throwable.getStackTrace().toString());
                 webserviceListener.responseFailedCalculation(context.getResources().getString(R.string.app_api_error));
             }

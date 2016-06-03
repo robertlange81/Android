@@ -4,11 +4,9 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
-import sageone.abacus.Models.Calculation;
-import sageone.abacus.Models.CalculationInput;
-import sageone.abacus.Models.CalculationInputData;
+import sageone.abacus.Models.FuelStations;
+import sageone.abacus.Models.InputData;
 import sageone.abacus.Models.Insurances;
 import sageone.abacus.Models.LocationData;
 import sageone.abacus.Models.TownData;
@@ -29,8 +27,8 @@ public interface AbacusApiInterface
     Call<TownData> TownByCoords(@Query("latitude") double latitude, @Query("longitude") double longitude);
 
     @GET("success")
-    Call<Calculation> Success();
+    Call<FuelStations> Success();
 
-    @POST("calc")
-    Call<Calculation> Calc(@Body CalculationInput data);
+    @POST("FuelApi.php?request=databycoords")
+    Call<FuelStations> DataByCoords(@Body InputData data);
 }

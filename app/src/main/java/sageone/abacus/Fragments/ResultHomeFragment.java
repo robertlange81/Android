@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import sageone.abacus.Activities.ResultActivity;
 import sageone.abacus.Helper.FormatHelper;
-import sageone.abacus.Models.Calculation;
+import sageone.abacus.Models.FuelStations;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.R;
 
@@ -64,12 +64,12 @@ public class ResultHomeFragment extends Fragment
         View v = null;
 
         // prepare the calculation data
-        Calculation data = (Calculation) getActivity().getIntent().getExtras().getParcelable("Calculation");
+        FuelStations data = (FuelStations) getActivity().getIntent().getExtras().getParcelable("FuelStations");
         FileStore f = new FileStore(getContext());
 
         // try to fetch previous data and set compare layout if so ..
         try {
-            Calculation dataCompare = f.readCalculationResult();
+            FuelStations dataCompare = f.readCalculationResult();
             v = _prepareCompareLayout(inflater, data, dataCompare, container);
         } catch (Exception e) {
             v = _prepareResultLayout(inflater, data, container);
@@ -92,7 +92,7 @@ public class ResultHomeFragment extends Fragment
      * @return
      */
     private View _prepareResultLayout(LayoutInflater inflater,
-                                      Calculation data, ViewGroup container)
+                                      FuelStations data, ViewGroup container)
     {
         View view = inflater.inflate(R.layout.fragment_result_intro, container, false);
         _initListener(view);
@@ -121,8 +121,8 @@ public class ResultHomeFragment extends Fragment
      * @param container
      * @return
      */
-    private View _prepareCompareLayout(LayoutInflater inflater, Calculation dataResult,
-                                       Calculation dataCompare, ViewGroup container)
+    private View _prepareCompareLayout(LayoutInflater inflater, FuelStations dataResult,
+                                       FuelStations dataCompare, ViewGroup container)
     {
         View view = inflater.inflate(R.layout.fragment_compare_intro, container, false);
         _initListener(view);

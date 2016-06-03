@@ -1,8 +1,6 @@
 package sageone.abacus.Helper;
 
 import android.content.Context;
-import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -17,10 +15,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.SortedMap;
 
-import sageone.abacus.Models.Calculation;
+import sageone.abacus.Models.FuelStations;
 import sageone.abacus.Models.Insurances;
 
 /**
@@ -53,7 +49,7 @@ public class FileStore {
      * @param data
      * @return
      */
-    public boolean writeCalculationResult(Calculation data)
+    public boolean writeCalculationResult(FuelStations data)
     {
         File cacheFile = new File(cachePath, FILENAME_CALC_RESULT);
         String _data = gson.toJson(data);
@@ -68,11 +64,11 @@ public class FileStore {
      * @return
      * @throws IOException
      */
-    public Calculation readCalculationResult() throws IOException
+    public FuelStations readCalculationResult() throws IOException
     {
         File cacheFile = new File(cachePath, FILENAME_CALC_RESULT);
         String json = read(cacheFile);
-        return gson.fromJson(json, Calculation.class);
+        return gson.fromJson(json, FuelStations.class);
     }
 
 

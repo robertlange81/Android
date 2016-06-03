@@ -4,9 +4,7 @@ import android.app.Activity;
 import java.util.HashMap;
 
 import sageone.abacus.Exceptions.ValidationException;
-import sageone.abacus.Exceptions.ValidationInsuranceException;
-import sageone.abacus.Models.CalculationInputData;
-import sageone.abacus.R;
+import sageone.abacus.Models.InputData;
 
 /**
  * Created by otomaske on 10.02.2016.
@@ -14,7 +12,7 @@ import sageone.abacus.R;
 public class CalculationInputHelper
 {
     private Activity a;
-    public CalculationInputData data;
+    public InputData data;
 
     public static final String WAGE_TYPE_GROSS   = "Bruttolohn";
     public static final String WAGE_TYPE_NET     = "Nettolohn";
@@ -22,7 +20,7 @@ public class CalculationInputHelper
     public static final String WAGE_PERIOD_MONTH = "m";
 
 
-    public CalculationInputHelper(Activity a, CalculationInputData data)
+    public CalculationInputHelper(Activity a, InputData data)
     {
         this.a = a;
         this.data = data;

@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 
 import android.text.InputFilter;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -21,7 +20,6 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -33,7 +31,6 @@ import android.widget.TextView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 import java.util.SortedMap;
@@ -46,9 +43,9 @@ import sageone.abacus.Helper.DecimalDigitsInputHelper;
 import sageone.abacus.Helper.EventHandler;
 import sageone.abacus.Helper.MessageHelper;
 import sageone.abacus.Interfaces.ApiCallbackListener;
-import sageone.abacus.Models.Calculation;
-import sageone.abacus.Models.CalculationInput;
-import sageone.abacus.Models.CalculationInputData;
+import sageone.abacus.Models.FuelStations;
+import sageone.abacus.Models.InputWrapper;
+import sageone.abacus.Models.InputData;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.Models.Insurances;
 import sageone.abacus.Models.LocationData;
@@ -73,7 +70,7 @@ public class InputActivity extends AppCompatActivity
     public static Spinner               state;
     public static Spinner               children;
     public static Button                calculate;
-    public static AutoCompleteTextView  insuranceAc;
+    // public static AutoCompleteTextView  insuranceAc;
     public static SwitchCompat          churchTax;
 
     private Integer selectedInsuranceId = -1;
@@ -93,7 +90,7 @@ public class InputActivity extends AppCompatActivity
     private NumberFormat numberFormat;
     private EventHandler eventHandler;
     private WebService webService;
-    private CalculationInputData data;
+    private InputData data;
     private TextView wageAmountLabel;
 
     public static InputActivity instance;
@@ -113,13 +110,13 @@ public class InputActivity extends AppCompatActivity
         numberFormat = NumberFormat.getCurrencyInstance(Locale.GERMANY);
         eventHandler = new EventHandler(this, getApplicationContext());
         webService = new WebService(getApplicationContext(), this);
-        data = new CalculationInputData();
+        data = new InputData();
         helper = new CalculationInputHelper(this, data);
 
         _initializeElements();
 
         _prepareState();
-        _prepareInsurance();
+        // _prepareInsurance(); TODO
 
         _initializeListener();
         _initRequestedCalcType();
@@ -185,7 +182,7 @@ public class InputActivity extends AppCompatActivity
         taxFree     = (EditText) findViewById(R.id.tax_free);
         children    = (Spinner) findViewById(R.id.children);
         calculate   = (Button) findViewById(R.id.calculate);
-        insuranceAc = (AutoCompleteTextView) findViewById(R.id.insuranceAc);
+        //insuranceAc = (AutoCompleteTextView) findViewById(R.id.insuranceAc);
         churchTax   = (SwitchCompat) findViewById(R.id.church);
 
         wageAmountLabel = (TextView) findViewById(R.id.wageamount_label);
@@ -318,7 +315,7 @@ public class InputActivity extends AppCompatActivity
             }
         });
 
-        // health insurance
+        /* health insurance
         insuranceAc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -328,7 +325,7 @@ public class InputActivity extends AppCompatActivity
                 Integer companyNumber = insurancesMap.get(value);
                 selectedInsuranceId = companyNumber != null ? Integer.valueOf(companyNumber) : -1;
             }
-        });
+        });*/
 
         // church switch
         churchTax.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -356,7 +353,7 @@ public class InputActivity extends AppCompatActivity
 
                 wage.clearFocus();
                 taxFree.clearFocus();
-                insuranceAc.clearFocus();
+                // insuranceAc.clearFocus();
 
                 if (!_setAndValidateData()) {
                     return;
@@ -370,8 +367,8 @@ public class InputActivity extends AppCompatActivity
 
                     @Override
                     public void run() {
-                        CalculationInput ci = new CalculationInput(data);
-                        webService.Calculate(ci);
+                        InputWrapper ci = new InputWrapper(data);
+                        webService.GetStationList(ci);
                     }
 
                 }, getResources().getInteger(R.integer.calculation_timeout));
@@ -428,18 +425,18 @@ public class InputActivity extends AppCompatActivity
             android.R.layout.simple_dropdown_item_1line, this.insurancesList);
 
         insurancesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        insuranceAc.setAdapter(insurancesAdapter);
+        // insuranceAc.setAdapter(insurancesAdapter);
     }
 
 
     @Override
     /**
-     * What we do if calculation finished.
+     * What we do if fuelStations finished.
      */
-    public void responseFinishCalculation(Calculation calculation)
+    public void responseFinishCalculation(FuelStations fuelStations)
     {
         Intent i = new Intent(this, ResultActivity.class);
-        i.putExtra("Calculation", calculation);
+        i.putExtra("FuelStations", fuelStations);
 
         dismissCalculationOverlay();
         startActivity(i);
@@ -489,14 +486,12 @@ public class InputActivity extends AppCompatActivity
      */
     private boolean _setAndValidateData()
     {
-        helper.data.town = "Leipzig";
-
         String message;
 
         try {
             return helper.validate();
         } catch (ValidationInsuranceException e) {
-            insuranceAc.requestFocus();
+            // insuranceAc.requestFocus();
             message = e.getMessage();
         } catch (ValidationException e) {
             wage.requestFocus();

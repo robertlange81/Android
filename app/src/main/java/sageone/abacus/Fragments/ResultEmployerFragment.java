@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import sageone.abacus.Exceptions.FormatException;
 import sageone.abacus.Helper.FormatHelper;
-import sageone.abacus.Models.Calculation;
+import sageone.abacus.Models.FuelStations;
 import sageone.abacus.R;
 
 /**
@@ -49,7 +49,7 @@ public class ResultEmployerFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_result_employer, container, false);
 
         // get the calculation result from the activity
-        Calculation data = (Calculation) activity.getIntent().getExtras().getParcelable("Calculation");
+        FuelStations data = (FuelStations) activity.getIntent().getExtras().getParcelable("FuelStations");
 
         _initViews(view);
         _setViewData(data);
@@ -141,7 +141,7 @@ public class ResultEmployerFragment extends Fragment
      *
      * @param data
      */
-    private void _setViewData(Calculation data)
+    private void _setViewData(FuelStations data)
     {
         txtTitle.setText(_formatCurrency("1"));
         txtWageGross.setText(_formatCurrency("1"));
