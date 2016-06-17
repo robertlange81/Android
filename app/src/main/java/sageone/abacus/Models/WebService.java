@@ -65,9 +65,9 @@ public class WebService
         Log.v("ServiceCall", "Initialize calculation ..");
         call = apiService.DataByCoords(data.data);
 
-        call.enqueue(new Callback<FuelStations>() {
+        call.enqueue(new Callback<Data>() {
             @Override
-            public void onResponse(Call<FuelStations> call, Response<FuelStations> response) {
+            public void onResponse(Call<Data> call, Response<Data> response) {
                 int code = response.code();
 
                 if (response.isSuccess()) {
@@ -78,7 +78,7 @@ public class WebService
             }
 
             @Override
-            public void onFailure(Call<FuelStations> call, Throwable throwable) {
+            public void onFailure(Call<Data> call, Throwable throwable) {
                 Log.e("WebService", "Failure on calculation. " + throwable.getStackTrace().toString());
                 webserviceListener.responseFailedCalculation(context.getResources().getString(R.string.app_api_error));
             }

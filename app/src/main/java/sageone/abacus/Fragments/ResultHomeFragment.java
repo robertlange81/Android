@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import sageone.abacus.Activities.ResultActivity;
 import sageone.abacus.Helper.FormatHelper;
-import sageone.abacus.Models.FuelStations;
+import sageone.abacus.Models.Data;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.R;
 
@@ -64,12 +64,12 @@ public class ResultHomeFragment extends Fragment
         View v = null;
 
         // prepare the calculation data
-        FuelStations data = (FuelStations) getActivity().getIntent().getExtras().getParcelable("FuelStations");
+        Data data = (Data) getActivity().getIntent().getExtras().getParcelable("Data");
         FileStore f = new FileStore(getContext());
 
         // try to fetch previous data and set compare layout if so ..
         try {
-            FuelStations dataCompare = f.readCalculationResult();
+            Data dataCompare = f.readCalculationResult();
             v = _prepareCompareLayout(inflater, data, dataCompare, container);
         } catch (Exception e) {
             v = _prepareResultLayout(inflater, data, container);
@@ -92,7 +92,7 @@ public class ResultHomeFragment extends Fragment
      * @return
      */
     private View _prepareResultLayout(LayoutInflater inflater,
-                                      FuelStations data, ViewGroup container)
+                                      Data data, ViewGroup container)
     {
         View view = inflater.inflate(R.layout.fragment_result_intro, container, false);
         _initListener(view);
@@ -121,8 +121,8 @@ public class ResultHomeFragment extends Fragment
      * @param container
      * @return
      */
-    private View _prepareCompareLayout(LayoutInflater inflater, FuelStations dataResult,
-                                       FuelStations dataCompare, ViewGroup container)
+    private View _prepareCompareLayout(LayoutInflater inflater, Data dataResult,
+                                       Data dataCompare, ViewGroup container)
     {
         View view = inflater.inflate(R.layout.fragment_compare_intro, container, false);
         _initListener(view);
