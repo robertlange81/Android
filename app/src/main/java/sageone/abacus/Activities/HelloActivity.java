@@ -27,7 +27,7 @@ import sageone.abacus.Helper.MessageHelper;
 import sageone.abacus.Helper.SystemHelper;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.Interfaces.ApiCallbackListener;
-import sageone.abacus.Models.Data;
+import sageone.abacus.Models.StationList;
 import sageone.abacus.Models.Insurances;
 import sageone.abacus.Models.LocationData;
 import sageone.abacus.Models.TownData;
@@ -200,13 +200,10 @@ public class HelloActivity extends AppCompatActivity implements ApiCallbackListe
             webService.Town(location.getLatitude(), location.getLongitude());
             return;
         } catch (Exception e) {
-            // fetch insurances ..
+
         }
 
         dialog(getResources().getString(R.string.preparation_dialog), true);
-
-        // webService.Insurances();
-
     }
 
     private android.location.Location getLocationByMobile() {
@@ -278,12 +275,12 @@ public class HelloActivity extends AppCompatActivity implements ApiCallbackListe
     }
 
     @Override
-    public void responseFinishCalculation(Data fuelStations) {
+    public void responseFinishStations(StationList fuelStations) {
 
     }
 
     @Override
-    public void responseFailedCalculation(String message) {
+    public void responseFailedStations(String message) {
 
     }
 

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import sageone.abacus.Activities.ResultActivity;
 import sageone.abacus.Helper.FormatHelper;
-import sageone.abacus.Models.Data;
+import sageone.abacus.Models.StationList;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.R;
 
@@ -63,21 +63,21 @@ public class ResultHomeFragment extends Fragment
     {
         View v = null;
 
-        // prepare the calculation data
-        Data data = (Data) getActivity().getIntent().getExtras().getParcelable("Data");
+        // prepare the calculation stationList
+        StationList stationList = (StationList) getActivity().getIntent().getExtras().getParcelable("StationList");
         FileStore f = new FileStore(getContext());
 
-        // try to fetch previous data and set compare layout if so ..
+        // try to fetch previous stationList and set compare layout if so ..
         try {
-            Data dataCompare = f.readCalculationResult();
-            v = _prepareCompareLayout(inflater, data, dataCompare, container);
+            StationList stationListCompare = f.readCalculationResult();
+            v = _prepareCompareLayout(inflater, stationList, stationListCompare, container);
         } catch (Exception e) {
-            v = _prepareResultLayout(inflater, data, container);
+            v = _prepareResultLayout(inflater, stationList, container);
         }
 
         // Cache result for comparison
         FileStore fs = new FileStore(getActivity());
-        fs.writeCalculationResult(data);
+        fs.writeCalculationResult(stationList);
 
         return v;
     }
@@ -87,17 +87,17 @@ public class ResultHomeFragment extends Fragment
      * Prepares the result layout.
      *
      * @param inflater
-     * @param data
+     * @param stationList
      * @param container
      * @return
      */
     private View _prepareResultLayout(LayoutInflater inflater,
-                                      Data data, ViewGroup container)
+                                      StationList stationList, ViewGroup container)
     {
         View view = inflater.inflate(R.layout.fragment_result_intro, container, false);
         _initListener(view);
 
-        // result data
+        // result stationList
         wageGross = (TextView) view.findViewById(R.id.result_intro_wage_gross);
         wageNet = (TextView) view.findViewById(R.id.result_intro_wage_net);
 
@@ -116,13 +116,13 @@ public class ResultHomeFragment extends Fragment
      * Prepares the compare layout.
      *
      * @param inflater
-     * @param dataResult
-     * @param dataCompare
+     * @param stationListResult
+     * @param stationListCompare
      * @param container
      * @return
      */
-    private View _prepareCompareLayout(LayoutInflater inflater, Data dataResult,
-                                       Data dataCompare, ViewGroup container)
+    private View _prepareCompareLayout(LayoutInflater inflater, StationList stationListResult,
+                                       StationList stationListCompare, ViewGroup container)
     {
         View view = inflater.inflate(R.layout.fragment_compare_intro, container, false);
         _initListener(view);

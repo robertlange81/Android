@@ -43,7 +43,7 @@ import sageone.abacus.Helper.DecimalDigitsInputHelper;
 import sageone.abacus.Helper.EventHandler;
 import sageone.abacus.Helper.MessageHelper;
 import sageone.abacus.Interfaces.ApiCallbackListener;
-import sageone.abacus.Models.Data;
+import sageone.abacus.Models.StationList;
 import sageone.abacus.Models.InputWrapper;
 import sageone.abacus.Models.InputData;
 import sageone.abacus.Helper.FileStore;
@@ -433,10 +433,13 @@ public class InputActivity extends AppCompatActivity
     /**
      * What we do if fuelStations finished.
      */
-    public void responseFinishCalculation(Data fuelStations)
+    public void responseFinishStations(StationList fuelStations)
     {
         Intent i = new Intent(this, ResultActivity.class);
-        // i.putExtra("Data", fuelStations);
+
+        // test
+        fuelStations.getStationData().get(0).getAddress();
+        // i.putExtra("StationList", fuelStations);
 
         dismissCalculationOverlay();
         startActivity(i);
@@ -447,7 +450,7 @@ public class InputActivity extends AppCompatActivity
     /**
      * What we do if calculation failed.
      */
-    public void responseFailedCalculation(String message)
+    public void responseFailedStations(String message)
     {
         dismissCalculationOverlay();
         MessageHelper.snackbar(this, message, Snackbar.LENGTH_INDEFINITE);

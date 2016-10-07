@@ -37,14 +37,14 @@
             android:layout_weight="1"
             android:id="@+id/hello_start_calculation_net"
             android:theme="@style/StartCalculation1"
-            android:text="@string/btn_calc_net"
+            android:text="@string/btn_calc_diesel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/hello_start_calculation_gross"
             android:theme="@style/StartCalculation1"
-            android:text="@string/btn_calc_gross"
+            android:text="@string/btn_calc_super"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content" />

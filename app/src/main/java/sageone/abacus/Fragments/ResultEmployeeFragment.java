@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import sageone.abacus.Exceptions.FormatException;
 import sageone.abacus.Helper.FormatHelper;
-import sageone.abacus.Models.Data;
+import sageone.abacus.Models.StationList;
 import sageone.abacus.R;
 
 /**
@@ -49,10 +49,10 @@ public class ResultEmployeeFragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_result_employee, container, false);
 
         // get the calculation result from the activity
-        Data data = activity.getIntent().getExtras().getParcelable("Data");
+        StationList stationList = activity.getIntent().getExtras().getParcelable("StationList");
 
         _initViews(view);
-        _setViewData(data);
+        _setViewData(stationList);
         _initializeListener(view);
 
         return view;
@@ -119,7 +119,7 @@ public class ResultEmployeeFragment extends Fragment
         txtTitle = (TextView) view.findViewById(R.id.result_employee_title_wage);
         txtWageGross = (TextView) view.findViewById(R.id.result_employee_wage_gross);
 
-        // Data views
+        // StationList views
         txtTax = (TextView) view.findViewById(R.id.result_employee_tax);
         txtWageTax = (TextView) view.findViewById(R.id.result_employee_wage_wagetax);
         txtSolidarity = (TextView) view.findViewById(R.id.result_employee_solidarity);
@@ -136,11 +136,11 @@ public class ResultEmployeeFragment extends Fragment
 
 
     /**
-     * Set all view data.
+     * Set all view stationList.
      *
-     * @param data
+     * @param stationList
      */
-    private void _setViewData(Data data)
+    private void _setViewData(StationList stationList)
     {
         txtTitle.setText(_formatCurrency("1"));
         txtWageGross.setText(_formatCurrency("1"));

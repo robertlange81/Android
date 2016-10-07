@@ -16,7 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import sageone.abacus.Models.Data;
+import sageone.abacus.Models.StationList;
 import sageone.abacus.Models.Insurances;
 
 /**
@@ -46,13 +46,13 @@ public class FileStore {
      * Write the calculation result to
      * a local application cache file.
      *
-     * @param data
+     * @param stationList
      * @return
      */
-    public boolean writeCalculationResult(Data data)
+    public boolean writeCalculationResult(StationList stationList)
     {
         File cacheFile = new File(cachePath, FILENAME_CALC_RESULT);
-        String _data = gson.toJson(data);
+        String _data = gson.toJson(stationList);
         return write(_data, cacheFile);
     }
 
@@ -64,11 +64,11 @@ public class FileStore {
      * @return
      * @throws IOException
      */
-    public Data readCalculationResult() throws IOException
+    public StationList readCalculationResult() throws IOException
     {
         File cacheFile = new File(cachePath, FILENAME_CALC_RESULT);
         String json = read(cacheFile);
-        return gson.fromJson(json, Data.class);
+        return gson.fromJson(json, StationList.class);
     }
 
 

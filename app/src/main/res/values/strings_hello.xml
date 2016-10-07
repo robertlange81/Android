@@ -21,8 +21,8 @@
     <string name="menu_employee">Ich bin Arbeitnehmer</string>
     <string name="menu_employer">Ich bin Arbeitgeber</string>
 
-    <string name="btn_calc_gross"><b>Brutto</b>lohn berechnen</string>
-    <string name="btn_calc_net"><b>Netto</b>lohn berechnen</string>
+    <string name="btn_calc_super"><b>Super</b></string>
+    <string name="btn_calc_diesel"><b>Diesel</b></string>
 
     <string name="hello_cache_cleared">Der <b>App-Cache</b> wurde erfolgreich geleert.\n\nDies geschieht ebenfalls mit jedem Neustart der App.</string>
     <string name="preparation_dialog">Anwendung wird vorbereitet ..</string>

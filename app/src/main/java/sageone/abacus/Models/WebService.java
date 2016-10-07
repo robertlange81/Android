@@ -65,64 +65,25 @@ public class WebService
         Log.v("ServiceCall", "Initialize calculation ..");
         call = apiService.DataByCoords(data.data);
 
-        call.enqueue(new Callback<Data>() {
+        call.enqueue(new Callback<StationList>() {
             @Override
-            public void onResponse(Call<Data> call, Response<Data> response) {
+            public void onResponse(Call<StationList> call, Response<StationList> response) {
                 int code = response.code();
 
                 if (response.isSuccess()) {
-                    webserviceListener.responseFinishCalculation(response.body());
+                    webserviceListener.responseFinishStations(response.body());
                 } else {
-                    webserviceListener.responseFailedCalculation(context.getResources().getString(R.string.exception_status_code));
+                    webserviceListener.responseFailedStations(context.getResources().getString(R.string.exception_status_code));
                 }
             }
 
             @Override
-            public void onFailure(Call<Data> call, Throwable throwable) {
+            public void onFailure(Call<StationList> call, Throwable throwable) {
                 Log.e("WebService", "Failure on calculation. " + throwable.getStackTrace().toString());
-                webserviceListener.responseFailedCalculation(context.getResources().getString(R.string.app_api_error));
+                webserviceListener.responseFailedStations(context.getResources().getString(R.string.app_api_error));
             }
         });
 
-    }
-
-
-    /**
-     * Fetch all available Health Insurances
-     * by calling web service via rest client.
-     */
-    public void Insurances()
-    {
-        Call<Insurances> call = apiService.Insurances();
-
-        call.enqueue(new Callback<Insurances>() {
-            @Override
-            public void onResponse(Call<Insurances> call, Response<Insurances> response) {
-
-                int code = response.code();
-                String message = null;
-
-                switch (code) {
-                    case 200:
-                        webserviceListener.responseFinishInsurances(response.body());
-                        break;
-                    case 401:
-                        message = context.getResources().getString(R.string.exception_http_auth);
-                        webserviceListener.responseFailedInsurances(message);
-                        break;
-                    default:
-                        message = context.getResources().getString(R.string.exception_status_code);
-                        webserviceListener.responseFailedInsurances(message);
-                        break;
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Insurances> call, Throwable t) {
-                String err = t.getMessage().toString();
-                webserviceListener.responseFailedInsurances(err);
-            }
-        });
     }
 
     /**
