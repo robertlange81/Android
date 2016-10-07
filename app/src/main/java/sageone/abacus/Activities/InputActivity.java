@@ -438,7 +438,7 @@ public class InputActivity extends AppCompatActivity
         Intent i = new Intent(this, ResultActivity.class);
 
         // test
-        fuelStations.getStationData().get(0).getAddress();
+        fuelStations.getFuelStation().get(0).getAddress();
         // i.putExtra("StationList", fuelStations);
 
         dismissCalculationOverlay();
