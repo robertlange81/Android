@@ -276,7 +276,7 @@ public class HelloActivity extends AppCompatActivity implements ApiCallbackListe
 
     @Override
     public void responseFinishStations(StationList fuelStations) {
-
+        String z = "test";
     }
 
     @Override
