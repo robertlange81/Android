@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_welcome_head">Brutto-/Nettolohnberechnung</string>
+    <string name="hello_welcome_sub">
+        Klicken Sie auf das + im unteren Bildschirm, um eine neue Berechnung zu starten.
+    </string>
+
+    <string name="hello_into_ad_head">Buchhaltung und Lohnabrechnung einfach und online!</string>
+    <string name="hello_intro_ad_content">
+        Lohnabrechnung sowie Angebote und Rechnungen einfach und online selber erlegigen.
+    </string>
+    <string name="hello_intro_ad_link">
+        <u>Online Buchhaltung und Lohnabrechnung</u>
+    </string>
+
+    <string name="hello_intro_ad_sage">Sage Abacus - \u00A9 YYYY Sage Software GmbH</string>
+
+    <string name="menu_netwage">Neue Nettolohnberechnung</string>
+    <string name="menu_grosswage">Neue Bruttolohnberechnung</string>
+
+    <string name="menu_employee">Ich bin Arbeitnehmer</string>
+    <string name="menu_employer">Ich bin Arbeitgeber</string>
+
+    <string name="btn_calc_super"><b>Super</b></string>
+    <string name="btn_calc_diesel"><b>Diesel</b></string>
+
+    <string name="hello_cache_cleared">Der <b>App-Cache</b> wurde erfolgreich geleert.\n\nDies geschieht ebenfalls mit jedem Neustart der App.</string>
+    <string name="preparation_dialog">Anwendung wird vorbereitet ..</string>
+</resources>
