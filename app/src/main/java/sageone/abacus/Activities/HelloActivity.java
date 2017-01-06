@@ -28,6 +28,7 @@ import sageone.abacus.Helper.SystemHelper;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.Interfaces.ApiCallbackListener;
 import sageone.abacus.Models.Example;
+import sageone.abacus.Models.FuelStations;
 import sageone.abacus.Models.Insurances;
 import sageone.abacus.Models.LocationData;
 import sageone.abacus.Models.TownData;
@@ -275,7 +276,7 @@ public class HelloActivity extends AppCompatActivity implements ApiCallbackListe
     }
 
     @Override
-    public void responseFinishStations(Example fuelStations) {
+    public void responseFinishStations(FuelStations fuelStations) {
         String z = "test";
     }
 

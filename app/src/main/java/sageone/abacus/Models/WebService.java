@@ -65,20 +65,24 @@ public class WebService
         Log.v("ServiceCall", "Initialize calculation ..");
         call = apiService.DataByCoords(data.data);
 
-        call.enqueue(new Callback<Example>() {
+        call.enqueue(new Callback<FuelStations>() {
             @Override
-            public void onResponse(Call<Example> call, Response<Example> response) {
+            public void onResponse(Call<FuelStations> call, Response<FuelStations> response) {
                 int code = response.code();
 
                 if (response.isSuccess()) {
-                    webserviceListener.responseFinishStations(response.body());
+                    try {
+                        webserviceListener.responseFinishStations(response.body());
+                    } catch (Exception ex) {
+                        String o = ex.toString();
+                    }
                 } else {
                     webserviceListener.responseFailedStations(context.getResources().getString(R.string.exception_status_code));
                 }
             }
 
             @Override
-            public void onFailure(Call<Example> call, Throwable throwable) {
+            public void onFailure(Call<FuelStations> call, Throwable throwable) {
                 Log.e("WebService", "Failure on calculation. " + throwable.getStackTrace().toString());
                 webserviceListener.responseFailedStations(context.getResources().getString(R.string.app_api_error));
             }

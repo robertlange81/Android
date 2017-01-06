@@ -20,11 +20,11 @@ public class StationList {
     private Double distance;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public String getInt() {
-        return id;
+    public int getId() {
+        return Integer.parseInt(id);
     }
 
-    public void setInt(String _int) {
+    public void setId(String _int) {
         this.id = _int;
     }
 
@@ -107,5 +107,63 @@ public class StationList {
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
     }
+
+    /**
+     * Liefert einen Wert aus {@code R.drawable}, der fuer das Zeichnen der
+     * Tankstellensymbols verwendet werden kann.
+     *
+     * @return Wert aus {@code R.drawable}
+     */
+    /*
+    public int getIdForDrawable() {
+        switch (getOwner()) {
+            case R.string.agip:
+                return R.drawable.agip;
+            case R.string.agravis:
+                return R.drawable.agravis;
+            case R.string.allguth:
+                return R.drawable.allguth;
+            case R.string.aral:
+                return R.drawable.aral;
+            case R.string.avia:
+                return R.drawable.avia;
+            case R.string.bavaria:
+                return R.drawable.bavaria;
+            case R.string.baywa:
+                return R.drawable.baywa;
+            case R.string.bp:
+                return R.drawable.bp;
+            case R.string.ed:
+                return R.drawable.ed;
+            case R.string.esso:
+                return R.drawable.esso;
+            case R.string.hem:
+                return R.drawable.hem;
+            case R.string.hoyer:
+                return R.drawable.hoyer;
+            case R.string.jet:
+                return R.drawable.jet;
+            case R.string.oil:
+                return R.drawable.oil;
+            case R.string.omv:
+                return R.drawable.omv;
+            case R.string.orlen:
+                return R.drawable.orlen;
+            case R.string.q1:
+                return R.drawable.q1;
+            case R.string.shell:
+                return R.drawable.shell;
+            case R.string.star:
+                return R.drawable.star;
+            case R.string.station:
+                return R.drawable.station;
+            case R.string.total:
+                return R.drawable.total;
+            case R.string.turmoel:
+                return R.drawable.turmoel;
+        }
+        // ggf. ein Standardbild liefern
+        return R.drawable.station;
+    }*/
 
 }

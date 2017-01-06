@@ -6,6 +6,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import sageone.abacus.Models.Example;
+import sageone.abacus.Models.FuelStations;
 import sageone.abacus.Models.StationList;
 import sageone.abacus.Models.InputData;
 import sageone.abacus.Models.Insurances;
@@ -31,5 +32,5 @@ public interface AbacusApiInterface
     Call<StationList> Success();
 
     @POST("FuelApi.php?request=databycoords")
-    Call<Example> DataByCoords(@Body InputData data);
+    Call<FuelStations> DataByCoords(@Body InputData data);
 }

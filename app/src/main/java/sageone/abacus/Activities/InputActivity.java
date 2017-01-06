@@ -44,11 +44,14 @@ import sageone.abacus.Helper.EventHandler;
 import sageone.abacus.Helper.MessageHelper;
 import sageone.abacus.Interfaces.ApiCallbackListener;
 import sageone.abacus.Models.Example;
+import sageone.abacus.Models.FuelStation;
+import sageone.abacus.Models.FuelStations;
 import sageone.abacus.Models.InputWrapper;
 import sageone.abacus.Models.InputData;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.Models.Insurances;
 import sageone.abacus.Models.LocationData;
+import sageone.abacus.Models.StationList;
 import sageone.abacus.Models.TownData;
 import sageone.abacus.R;
 import sageone.abacus.Models.WebService;
@@ -433,14 +436,14 @@ public class InputActivity extends AppCompatActivity
     /**
      * What we do if fuelStations finished.
      */
-    public void responseFinishStations(Example fuelStations)
+    public void responseFinishStations(FuelStations fuelStations)
     {
-        // List<FuelStation> test = fuelStations.getListFuelStations();
+        //List<StationList> test = (List<StationList>) fuelStations.values();
         Intent i = new Intent(this, FuelStationActivity.class);
 
         // i.putExtra("fuelStations", fuelStations);
 
-        dismissCalculationOverlay();
+        // dismissCalculationOverlay();
         startActivity(i);
     }
 

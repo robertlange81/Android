@@ -7,8 +7,10 @@
 package sageone.abacus.Models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import sageone.abacus.R;
 
@@ -19,24 +21,33 @@ import sageone.abacus.R;
  * @author Robert Lange
  * 
  */
-public final class FuelStations extends Hashtable<Integer, FuelStation> {
+public final class FuelStations /* extends Hashtable<Integer, StationList> */ {
 
-	private static final long serialVersionUID = 6568074816645233035L;
+	// private static final long serialVersionUID = 6568074816645233035L;
 	private static final FuelStations INSTANCE = new FuelStations();
 
 	private FuelStations() {
 		super();
 	}
 
-    public List<FuelStation> fs = new ArrayList<FuelStation>();
+    public List<StationList> stationList = null;
+    public Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    public static void setFuelStations(List<FuelStation> fs) {
+    public List<StationList> getStationList() {
+        return stationList;
+    }
+
+    public void setStationList(List<StationList> stationList) {
+        this.stationList = stationList;
+    }
+/*
+    public static void setFuelStations(List<StationList> fs) {
         INSTANCE.clear();
-        for(FuelStation v : fs)
+        for(StationList v : fs)
             INSTANCE.put(v.getId(), v);
     }
 
-    public static void setFuelStation(FuelStation fs) {
+    public static void setFuelStation(StationList fs) {
         INSTANCE.put(fs.getId(), fs);
     }
 
@@ -46,8 +57,8 @@ public final class FuelStations extends Hashtable<Integer, FuelStation> {
 	 * 
 	 * @param id
 	 * @return Instanz eines {@link FuelStation}s
-	 */
-	public static FuelStation getFuelStationById(int id) {
+
+	public static StationList getFuelStationById(int id) {
         return INSTANCE.get(id);
 	}
 
@@ -57,9 +68,10 @@ public final class FuelStations extends Hashtable<Integer, FuelStation> {
      *
      * @return Instanz eines {@link FuelStation}s
      */
-    public static ArrayList<FuelStation> getAll() {
-        return new ArrayList<FuelStation>(INSTANCE.values());
-    }
+    /*
+    public static ArrayList<StationList> getAll() {
+        return new ArrayList<StationList>(INSTANCE.values());
+    }*/
 
     public static int matchOwner(String owner) {
         String o = owner.toLowerCase();
@@ -101,8 +113,8 @@ public final class FuelStations extends Hashtable<Integer, FuelStation> {
                 return R.string.shell;
         if(o.contains("star"))
                 return R.string.star;
-        //if(o.contains("station"))
-                //return R.string.station;
+        if(o.contains("station"))
+                return R.string.station;
         if(o.contains("total"))
                 return R.string.total;
         if(o.contains("turmoel"))

@@ -22,6 +22,7 @@ import sageone.abacus.Comparator.DistanceComparator;
 import sageone.abacus.Comparator.PriceComparator;
 import sageone.abacus.Models.FuelStation;
 import sageone.abacus.Models.FuelStations;
+import sageone.abacus.Models.StationList;
 import sageone.abacus.R;
 
 /**
@@ -32,20 +33,20 @@ import sageone.abacus.R;
  */
 public class FuelStationAdapter extends BaseAdapter {
 
-    private final List<FuelStation> stationList;
+    private final List<StationList> stationList;
     private final LayoutInflater inflator;
     public  static Context contextHolder;
 
     public FuelStationAdapter(Context context) {
         contextHolder = context;
         inflator = LayoutInflater.from(context);
-        stationList = new ArrayList<FuelStation>();
-        // FuelStation fuer alle Monate ermitteln
-        for(FuelStation fs : FuelStations.getAll())
+        stationList = new ArrayList<StationList>();
+        /* FuelStation fuer alle Monate ermitteln
+        for(StationList fs : FuelStations.getAll())
         {
             stationList.add(fs);
         }
-        notifyDataSetChanged();
+        notifyDataSetChanged();*/
     }
 
     public enum SortOrder {
