@@ -8,7 +8,7 @@ import java.util.List;
 
 public class StationList {
 
-    private String _int;
+    private String id;
     private String owner;
     private Boolean isOpen;
     private String openFrom;
@@ -21,11 +21,11 @@ public class StationList {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public String getInt() {
-        return _int;
+        return id;
     }
 
     public void setInt(String _int) {
-        this._int = _int;
+        this.id = _int;
     }
 
     public String getOwner() {

@@ -65,9 +65,9 @@ public class WebService
         Log.v("ServiceCall", "Initialize calculation ..");
         call = apiService.DataByCoords(data.data);
 
-        call.enqueue(new Callback<StationList>() {
+        call.enqueue(new Callback<Example>() {
             @Override
-            public void onResponse(Call<StationList> call, Response<StationList> response) {
+            public void onResponse(Call<Example> call, Response<Example> response) {
                 int code = response.code();
 
                 if (response.isSuccess()) {
@@ -78,7 +78,7 @@ public class WebService
             }
 
             @Override
-            public void onFailure(Call<StationList> call, Throwable throwable) {
+            public void onFailure(Call<Example> call, Throwable throwable) {
                 Log.e("WebService", "Failure on calculation. " + throwable.getStackTrace().toString());
                 webserviceListener.responseFailedStations(context.getResources().getString(R.string.app_api_error));
             }

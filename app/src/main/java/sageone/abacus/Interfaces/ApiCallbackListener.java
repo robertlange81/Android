@@ -1,5 +1,9 @@
 package sageone.abacus.Interfaces;
 
+import java.util.List;
+
+import sageone.abacus.Models.Example;
+import sageone.abacus.Models.StationData;
 import sageone.abacus.Models.StationList;
 import sageone.abacus.Models.Insurances;
 import sageone.abacus.Models.LocationData;
@@ -12,7 +16,7 @@ public interface ApiCallbackListener
 {
     void responseFinishInsurances(Insurances insurances);
     void responseFailedInsurances(String message);
-    void responseFinishStations(StationList fuelStations);
+    void responseFinishStations(Example fuelStations);
     void responseFailedStations(String message);
 
     void responseFinishLocation(LocationData location);

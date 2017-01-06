@@ -43,9 +43,7 @@ import sageone.abacus.Helper.DecimalDigitsInputHelper;
 import sageone.abacus.Helper.EventHandler;
 import sageone.abacus.Helper.MessageHelper;
 import sageone.abacus.Interfaces.ApiCallbackListener;
-import sageone.abacus.Models.Address;
-import sageone.abacus.Models.FuelStation;
-import sageone.abacus.Models.StationList;
+import sageone.abacus.Models.Example;
 import sageone.abacus.Models.InputWrapper;
 import sageone.abacus.Models.InputData;
 import sageone.abacus.Helper.FileStore;
@@ -435,9 +433,9 @@ public class InputActivity extends AppCompatActivity
     /**
      * What we do if fuelStations finished.
      */
-    public void responseFinishStations(StationList fuelStations)
+    public void responseFinishStations(Example fuelStations)
     {
-        List<FuelStation> test = fuelStations.getListFuelStations();
+        // List<FuelStation> test = fuelStations.getListFuelStations();
         Intent i = new Intent(this, FuelStationActivity.class);
 
         // i.putExtra("fuelStations", fuelStations);

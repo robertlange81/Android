@@ -1,16 +1,14 @@
 package sageone.abacus.Models;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by rlange on 06.01.2017.
- */
 public class Example {
 
-    private List<StationList> stationList = null;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    public List<StationList> stationList = null;
+    public Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public List<StationList> getStationList() {
         return stationList;
