@@ -69,15 +69,15 @@ public class ResultHomeFragment extends Fragment
 
         // try to fetch previous stationList and set compare layout if so ..
         try {
-            StationList stationListCompare = f.readCalculationResult();
-            v = _prepareCompareLayout(inflater, stationList, stationListCompare, container);
+            //StationList stationListCompare = f.readStationList();
+            // v = _prepareCompareLayout(inflater, stationList, stationListCompare, container);
         } catch (Exception e) {
             v = _prepareResultLayout(inflater, stationList, container);
         }
 
         // Cache result for comparison
-        FileStore fs = new FileStore(getActivity());
-        fs.writeCalculationResult(stationList);
+        //FileStore fs = new FileStore(getActivity());
+        //fs.writeStationList(stationList);
 
         return v;
     }

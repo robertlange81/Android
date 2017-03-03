@@ -1,12 +1,13 @@
 package sageone.abacus.Models;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StationList {
+public class StationList implements Serializable {
 
     private String id;
     private String owner;
@@ -18,7 +19,7 @@ public class StationList {
     private Address address;
     private String reporttime;
     private Double distance;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    //private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     public int getId() {
         return Integer.parseInt(id);
@@ -100,13 +101,14 @@ public class StationList {
         this.distance = distance;
     }
 
+    /*
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;
     }
 
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
-    }
+    }*/
 
     /**
      * Liefert einen Wert aus {@code R.drawable}, der fuer das Zeichnen der

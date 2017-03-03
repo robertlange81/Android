@@ -6,6 +6,7 @@
  */
 package sageone.abacus.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -21,7 +22,7 @@ import sageone.abacus.R;
  * @author Robert Lange
  * 
  */
-public final class FuelStations /* extends Hashtable<Integer, StationList> */ {
+public final class FuelStations implements Serializable /* extends Hashtable<Integer, StationList> */ {
 
 	// private static final long serialVersionUID = 6568074816645233035L;
 	private static final FuelStations INSTANCE = new FuelStations();

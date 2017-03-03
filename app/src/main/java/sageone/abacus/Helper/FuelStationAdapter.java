@@ -37,16 +37,16 @@ public class FuelStationAdapter extends BaseAdapter {
     private final LayoutInflater inflator;
     public  static Context contextHolder;
 
-    public FuelStationAdapter(Context context) {
+    public FuelStationAdapter(Context context, FuelStations stations) {
         contextHolder = context;
         inflator = LayoutInflater.from(context);
         stationList = new ArrayList<StationList>();
-        /* FuelStation fuer alle Monate ermitteln
-        for(StationList fs : FuelStations.getAll())
+        // FuelStation fuer alle Monate ermitteln
+        for(StationList fs : stations.getStationList())
         {
             stationList.add(fs);
         }
-        notifyDataSetChanged();*/
+        notifyDataSetChanged();
     }
 
     public enum SortOrder {
@@ -88,64 +88,67 @@ public class FuelStationAdapter extends BaseAdapter {
     public View getView(int position, View rowView, ViewGroup parent) {
         ViewHolder holder;
 
-        // falls noetig, rowView bauen
-        if (rowView == null) {
-            // Layoutdatei entfalten
-            rowView = inflator.inflate(R.layout.row, parent, false);
+        try {
+            // falls noetig, rowView bauen
+            if (rowView == null) {
+                // Layoutdatei entfalten
+                rowView = inflator.inflate(R.layout.row, parent, false);
 
-            // Holder erzeugen
-            holder = new ViewHolder();
-            holder.icon = (ImageView) rowView.findViewById(R.id.icon);
-            holder.name = (TextView) rowView.findViewById(R.id.stationName);
-            holder.distance = (TextView) rowView
-                    .findViewById(R.id.distance);
-            holder.price = (TextView) rowView
-                    .findViewById(R.id.price);
-            holder.openingTimes = (TextView) rowView
-                    .findViewById(R.id.openingTimes);
-            holder.favorit = (CheckBox) rowView
-                    .findViewById(R.id.favorite);
+                // Holder erzeugen
+                holder = new ViewHolder();
+                holder.icon = (ImageView) rowView.findViewById(R.id.icon);
+                holder.name = (TextView) rowView.findViewById(R.id.stationName);
+                holder.distance = (TextView) rowView
+                        .findViewById(R.id.distance);
+                holder.price = (TextView) rowView
+                        .findViewById(R.id.price);
+                holder.openingTimes = (TextView) rowView
+                        .findViewById(R.id.openingTimes);
+                holder.favorit = (CheckBox) rowView
+                        .findViewById(R.id.favorite);
 
-            holder.favorit.setOnClickListener(new View.OnClickListener() {
+                holder.favorit.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    Set<Integer> favorits = FuelStationAdapter.readPrefs("favorits");
-                    if (((CheckBox) v).isChecked()) {
-                        favorits.add(v.getId());
-                    } else {
-                        favorits.remove(v.getId());
+                    @Override
+                    public void onClick(View v) {
+                        Set<Integer> favorits = FuelStationAdapter.readPrefs("favorits");
+                        if (((CheckBox) v).isChecked()) {
+                            favorits.add(v.getId());
+                        } else {
+                            favorits.remove(v.getId());
+                        }
+                        FuelStationAdapter.savePrefs("favorits", favorits);
                     }
-                    FuelStationAdapter.savePrefs("favorits", favorits);
-                }
-            });
+                });
 
-            rowView.setTag(holder);
-        } else {
-            // Holder bereits vorhanden
-            holder = (ViewHolder) rowView.getTag();
+                rowView.setTag(holder);
+            } else {
+                // Holder bereits vorhanden
+                holder = (ViewHolder) rowView.getTag();
+            }
+
+            Context context = parent.getContext();
+            StationList station = (StationList) getItem(position);
+            holder.favorit.setEnabled(true);
+            holder.favorit.setId(station.getId());
+            Set<Integer> favorits = this.readPrefs("favorits");
+            if (favorits.contains(station.getId())) {
+                holder.favorit.setChecked(true);
+            }
+
+            //holder.icon.setImageResource(station.getIdForDrawable());
+            holder.name.setText(station.getOwner());
+            holder.distance.setText(String.format("%.2f", station.getDistance()) + " km");
+            holder.price.setText(String.format("%.3f", station.getPrice()) + " €/L");
+            holder.openingTimes.setText(station.getOpenFrom() + "-" + station.getOpenTo());
+
+            if (++position >= getCount()) {
+                position = 0;
+            }
+            station = (StationList) getItem(position);
+        } catch (Exception x) {
+            String y = x.toString();
         }
-
-        Context context = parent.getContext();
-        FuelStation station = (FuelStation) getItem(position);
-        holder.favorit.setEnabled(true);
-        holder.favorit.setId(station.getId());
-        Set<Integer> favorits = this.readPrefs("favorits");
-        if(favorits.contains(station.getId())) {
-            holder.favorit.setChecked(true);
-        }
-
-        //holder.icon.setImageResource(station.getIdForDrawable());
-        holder.name.setText(station.getOwner());
-        holder.distance.setText(String.format("%.2f", station.getDistance()) + " km");
-        holder.price.setText(String.format("%.3f", station.getPrice()) + " €/L");
-        holder.openingTimes.setText(station.getOpenFrom() + "-" + station.getOpenTo());
-
-        if (++position >= getCount()) {
-            position = 0;
-        }
-        station = (FuelStation) getItem(position);
-
         return rowView;
     }
 

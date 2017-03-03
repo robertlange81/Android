@@ -29,6 +29,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,15 +44,12 @@ import sageone.abacus.Helper.DecimalDigitsInputHelper;
 import sageone.abacus.Helper.EventHandler;
 import sageone.abacus.Helper.MessageHelper;
 import sageone.abacus.Interfaces.ApiCallbackListener;
-import sageone.abacus.Models.Example;
-import sageone.abacus.Models.FuelStation;
 import sageone.abacus.Models.FuelStations;
 import sageone.abacus.Models.InputWrapper;
 import sageone.abacus.Models.InputData;
 import sageone.abacus.Helper.FileStore;
 import sageone.abacus.Models.Insurances;
 import sageone.abacus.Models.LocationData;
-import sageone.abacus.Models.StationList;
 import sageone.abacus.Models.TownData;
 import sageone.abacus.R;
 import sageone.abacus.Models.WebService;
@@ -365,7 +363,14 @@ public class InputActivity extends AppCompatActivity
                 eventHandler.hideKeyboardInput((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE));
                 showCalculationOverlay();
 
-                // do the calculation delayed for advertising
+                Intent i = new Intent(InputActivity.this, FuelStationActivity.class);
+
+                i.putExtra("fuelType", "Diesel");
+                i.putExtra("orderBy", "Preis");
+
+                startActivity(i);
+
+                /* do the calculation delayed for advertising
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
@@ -375,6 +380,7 @@ public class InputActivity extends AppCompatActivity
                     }
 
                 }, getResources().getInteger(R.integer.calculation_timeout));
+                */
             }
         });
 
@@ -439,12 +445,23 @@ public class InputActivity extends AppCompatActivity
     public void responseFinishStations(FuelStations fuelStations)
     {
         //List<StationList> test = (List<StationList>) fuelStations.values();
-        Intent i = new Intent(this, FuelStationActivity.class);
 
-        // i.putExtra("fuelStations", fuelStations);
 
-        // dismissCalculationOverlay();
-        startActivity(i);
+        /* Cache result for comparison
+        FileStore fs = new FileStore(getApplicationContext());
+        fs.writeStationList(fuelStations);
+
+        try {
+            FuelStations x = fs.readStationList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } */
+
+        //Intent i = new Intent(this, FuelStationActivity.class);
+        //i.putExtra("fuelType", "Diesel");
+        //i.putExtra("orderBy", "Preis");
+
+        //startActivity(i);
     }
 
 

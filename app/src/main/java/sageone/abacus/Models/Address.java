@@ -1,9 +1,10 @@
 package sageone.abacus.Models;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Address {
+public class Address implements Serializable {
 
     private String street;
     private String housenumber;

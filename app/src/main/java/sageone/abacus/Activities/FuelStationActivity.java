@@ -28,11 +28,21 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.List;
 
+import sageone.abacus.Helper.FileStore;
 import sageone.abacus.Helper.FuelStationAdapter;
+import sageone.abacus.Interfaces.ApiCallbackListener;
 import sageone.abacus.Models.FuelStation;
+import sageone.abacus.Models.FuelStations;
+import sageone.abacus.Models.InputData;
+import sageone.abacus.Models.InputWrapper;
+import sageone.abacus.Models.Insurances;
+import sageone.abacus.Models.LocationData;
 import sageone.abacus.Models.StationList;
+import sageone.abacus.Models.TownData;
+import sageone.abacus.Models.WebService;
 import sageone.abacus.R;
 
 
@@ -44,7 +54,7 @@ import sageone.abacus.R;
  *
  */
 public class FuelStationActivity extends AppCompatActivity implements
-        OnItemClickListener, AdapterView.OnItemSelectedListener {
+        OnItemClickListener, AdapterView.OnItemSelectedListener, ApiCallbackListener {
 
     private FuelStationAdapter adapter;
     public LocationManager lm;
@@ -65,10 +75,19 @@ public class FuelStationActivity extends AppCompatActivity implements
         Bundle extras = getIntent().getExtras();
         if (extras != null)
         {
-            StationList fs = (StationList)extras.getSerializable("customer");
-            // do something with the customer
+            String x = extras.getString("fuelType");
         }
 
+        InputData data = new InputData();
+        InputWrapper ci = new InputWrapper(data);
+
+        LinearLayout linlaHeaderProgress = (LinearLayout) findViewById(R.id.linlaHeaderProgress);
+        linlaHeaderProgress.setVisibility(View.VISIBLE);
+
+        WebService webService = new WebService(getApplicationContext(), this);
+        webService.GetStationList(ci);
+
+        /*
         LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(android.location.Location location) {
                 if (location.getTime() > FuelStationActivity.this.location.getTime() + 1000 * 20
@@ -109,6 +128,7 @@ public class FuelStationActivity extends AppCompatActivity implements
             return;
         }
         lm.requestLocationUpdates(provider, 30000, 100, locationListener);
+        */
 
         alertdlg = new AlertDialog.Builder(this).create();
         refresh();
@@ -173,6 +193,65 @@ public class FuelStationActivity extends AppCompatActivity implements
         task.execute(new String[] { ""});
     }
 
+    @Override
+    public void responseFinishInsurances(Insurances insurances) {
+
+    }
+
+    @Override
+    public void responseFailedInsurances(String message) {
+
+    }
+
+    @Override
+    public void responseFinishStations(FuelStations fuelStations) {
+
+        adapter = new FuelStationAdapter(FuelStationActivity.this, fuelStations);
+        int sortPos = 0;
+
+        //if(SettingsActivity.sortBy != null && SettingsActivity.sortBy.getSelectedItemPosition() >= 0)
+        //    sortPos = SettingsActivity.sortBy.getSelectedItemPosition();
+
+        switch(sortPos)
+        {
+            case 0 : adapter.sortBy(FuelStationAdapter.SortOrder.PRICE);break;
+            case 1 : adapter.sortBy(FuelStationAdapter.SortOrder.DISTANCE);break;
+            case 2 : adapter.sortBy(FuelStationAdapter.SortOrder.COMBINED);break;
+        }
+
+        ListView listView = (ListView) findViewById(R.id.listview); // TODO
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(FuelStationActivity.this);
+
+        LinearLayout linlaHeaderProgress = (LinearLayout) findViewById(R.id.linlaHeaderProgress);
+        linlaHeaderProgress.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void responseFailedStations(String message) {
+
+    }
+
+    @Override
+    public void responseFinishLocation(LocationData location) {
+
+    }
+
+    @Override
+    public void responseFailedLocation(String message) {
+
+    }
+
+    @Override
+    public void responseFinishTown(TownData location) {
+
+    }
+
+    @Override
+    public void responseFailedTown(String message) {
+
+    }
+
     private class FuelServiceAccessTask extends AsyncTask<String, Void, String> {
 
         // private final AndrestClient rest = new AndrestClient();
@@ -232,13 +311,15 @@ public class FuelStationActivity extends AppCompatActivity implements
                 return town;
             }
             */
+
             return "";
         }
 
         @Override
         protected void onPostExecute(String result) {
 
-            adapter = new FuelStationAdapter(FuelStationActivity.this);
+            /*
+            adapter = new FuelStationAdapter(FuelStationActivity.this, null);
             int sortPos = 0;
 
             //if(SettingsActivity.sortBy != null && SettingsActivity.sortBy.getSelectedItemPosition() >= 0)
@@ -256,6 +337,7 @@ public class FuelStationActivity extends AppCompatActivity implements
             listView.setOnItemClickListener(FuelStationActivity.this);
 
             linlaHeaderProgress.setVisibility(View.GONE);
+            */
         }
 
         /*
